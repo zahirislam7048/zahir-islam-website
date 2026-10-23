@@ -14,8 +14,8 @@ if [ "${1:-}" != "--copy-only" ]; then
 fi
 
 # Never overwrites local-seo-tool/config.php (it is not in the repo) and never deletes files on the server.
-rsync -a \
-  --exclude '.git' --exclude '.cpanel.yml' --exclude 'deploy.sh' --exclude 'README.md' --exclude '.gitignore' \
-  --exclude 'local-seo-tool/config.php' \
-  ./ "$DEST/"
+tar -cf - \
+  --exclude='./.git' --exclude='./.cpanel.yml' --exclude='./deploy.sh' --exclude='./README.md' --exclude='./.gitignore' \
+  --exclude='./local-seo-tool/config.php' \
+  . | tar -xf - -C "$DEST"
 echo "$(date '+%F %T') deployed $(git rev-parse --short HEAD)" >> "$HOME/deploy.log"
