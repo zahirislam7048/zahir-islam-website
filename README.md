@@ -1,13 +1,9 @@
 # Zahir Islam website
 
-Every push to `main` uploads the changed files to cPanel automatically (`.github/workflows/deploy.yml`).
+Hosted on Namecheap cPanel. cPanel **Git Version Control** keeps a copy of this repo at
+`~/repositories/zahir-islam-website`, and a cron job runs `deploy.sh` every 5 minutes:
+when `main` has new commits it pulls them and copies the site into `~/public_html`.
 
-## One-time setup (Settings → Secrets and variables → Actions)
-Secrets:
-- `FTP_SERVER` – e.g. `ftp.yourdomain.com`
-- `FTP_USERNAME` – cPanel FTP account
-- `FTP_PASSWORD` – its password
-
-Optional variable `FTP_SERVER_DIR` – folder on the server, default `public_html/`.
-
-`local-seo-tool/config.php` is never stored here; it lives only on the server.
+- Manual deploy: cPanel → Git Version Control → Manage → Pull or Deploy → Update from Remote → Deploy HEAD Commit.
+- Log: `~/deploy.log`
+- `local-seo-tool/config.php` is never stored here; it lives only on the server.
