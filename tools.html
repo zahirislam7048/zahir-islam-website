@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Marketing Tools</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: single-column case study report on the portfolio's navy + gold system; numbers first, story second. */
+:root {
+  --navy: #171642; --gold: #FCB814; --gold-deep: #D09818;
+  --bg: var(--navy); --surface: #1F1D52; --line: #2F2D5C; --fg: #FFFFFF; --muted: #A9A8C4;
+  --accent: var(--gold); --accent-ink: var(--navy); --good: #4ADE9B;
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 960px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 700; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.back { font-size: 15px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; font-family: var(--f-body); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border: 1px solid var(--line); }
+header { padding-block: 64px 48px; }
+header .wrap { display: grid; gap: 20px; }
+.client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-row img { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: block; }
+.client-row .meta { display: grid; gap: 2px; font-size: 15px; color: var(--muted); }
+.client-row .meta b { color: var(--fg); font-size: 18px; }
+h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 20px; color: var(--muted); max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 22px 20px; display: grid; gap: 4px; min-width: 0; }
+.kpi .label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi .val { font-family: var(--f-display); font-size: clamp(30px, 4vw, 42px); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .sub { font-size: 14px; color: var(--muted); }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section .wrap { display: grid; gap: 20px; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); }
+.prose { display: grid; gap: 14px; max-width: 680px; color: var(--muted); }
+.prose strong { color: var(--fg); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.steps b { display: block; font-size: 19px; }
+.steps span { color: var(--muted); font-size: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; min-width: 0; }
+.chart-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chart-head b { font-size: 19px; }
+.chart-head span { font-size: 14px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { width: 100%; min-width: 560px; height: auto; display: block; }
+.ax { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.note { font-size: 14px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: #fff; display: block; }
+figcaption { font-size: 14px; color: var(--muted); }
+blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.4; max-width: 760px; position: relative; padding-top: 34px; }
+blockquote::before { content: "\201C"; position: absolute; top: -18px; left: -2px; font-size: 80px; line-height: 1; color: var(--accent); }
+.who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.who .av { width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+.who b { display: block; }
+.who span { color: var(--muted); }
+.cta { text-align: left; }
+.cta .row { display: flex; gap: 12px; flex-wrap: wrap; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 8px 18px; }
+th, td { text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 500; }
+tfoot td { font-weight: 700; color: var(--accent); border-bottom: 0; }
+.shots summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.shot-grid { display: grid; gap: 14px; margin-top: 14px; }
+.shot-grid img { width: 100%; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; display: block; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+@media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--muted); font-size: 16px; }
+.card .n { font-family: var(--f-mono); color: var(--accent); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.result-card { text-decoration: none; color: inherit; transition: border-color .2s, transform .15s; }
+.result-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.result-card .big { font-family: var(--f-display); font-size: 42px; font-weight: 700; color: var(--accent); line-height: 1; }
+.result-card .go { color: var(--accent); font-weight: 700; font-size: 15px; }
+.result-card .top { display: flex; align-items: center; gap: 12px; }
+.result-card .top img { width: 44px; height: 44px; border-radius: 10px; background: #fff; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+.checks li { position: relative; padding-left: 26px; color: var(--fg); font-size: 16px; }
+.checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.no li::before { content: "\2715"; color: var(--muted); }
+.timeline { display: grid; gap: 0; }
+.timeline > div { display: grid; grid-template-columns: 160px 1fr; gap: 18px; padding-block: 18px; border-top: 1px solid var(--line); }
+.timeline > div:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.timeline b { display: block; font-size: 19px; }
+.timeline span { color: var(--muted); font-size: 16px; }
+.compare td:not(:first-child), .compare th:not(:first-child) { text-align: center; }
+.compare .yes { color: var(--accent); font-weight: 700; }
+.compare .me { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.faq { display: grid; gap: 0; }
+.faq details { border-top: 1px solid var(--line); padding-block: 16px; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-size: 19px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq p { color: var(--muted); margin-top: 10px; max-width: 720px; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 8px; }
+.hero-stats div { display: grid; gap: 2px; }
+.hero-stats b { font-family: var(--f-display); font-size: 34px; color: var(--accent); line-height: 1; }
+.hero-stats span { color: var(--muted); font-size: 15px; }
+.logos { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.logos img { width: 56px; height: 56px; border-radius: 12px; background: #fff; object-fit: cover; }
+.callout { background: var(--surface); border: 1px solid var(--accent); border-radius: 18px; padding: 32px; display: grid; gap: 16px; }
+@media (max-width: 860px) { .grid3 { grid-template-columns: 1fr 1fr; } .checks { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .grid3, .grid2 { grid-template-columns: 1fr; } .timeline > div { grid-template-columns: 1fr; gap: 4px; } }
+
+.tool { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display: grid; gap: 18px; min-width: 0; }
+.form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.form .full { grid-column: 1 / -1; }
+.form label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+.form input, .form select, .form textarea { font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; width: 100%; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--accent); }
+.out { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.out div { background: var(--bg); padding: 16px; display: grid; gap: 2px; }
+.out span { font-size: 13px; color: var(--muted); }
+.out b { font-family: var(--f-display); font-size: 28px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.verdict { font-size: 17px; }
+.boxes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 20px; }
+.boxes label { display: flex; gap: 10px; align-items: center; font-size: 16px; color: var(--fg); }
+.boxes input { width: 18px; height: 18px; accent-color: var(--accent); }
+.meter { height: 12px; background: var(--line); border-radius: 6px; overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+pre.code { margin: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.5; white-space: pre; max-height: 420px; }
+.qgroups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.qgroups div { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 16px; min-width: 0; }
+.qgroups h4 { margin: 0 0 8px; font-size: 16px; color: var(--accent); }
+.qgroups ul { margin: 0; padding-left: 18px; color: var(--fg); font-size: 15px; display: grid; gap: 4px; }
+.toolnav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.nap-out { display: grid; gap: 8px; }
+.nap-row { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 10px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; font-size: 15px; }
+.nap-row .ok { color: var(--good); font-weight: 700; }
+.nap-row .bad { color: #F87171; font-weight: 700; }
+.layer h4 { margin: 6px 0 2px; font-size: 17px; color: var(--accent); grid-column: 1 / -1; }
+@media (max-width: 1000px) { .toolnav { grid-template-columns: repeat(3, 1fr); } }
+.toolnav a { text-decoration: none; }
+@media (max-width: 760px) { .form, .boxes, .qgroups, .toolnav { grid-template-columns: 1fr; } .out { grid-template-columns: 1fr 1fr; } }
+
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+#local-seo .card { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 6px; }
+#local-seo .card .n { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+#local-seo .card h3 { font-size: 19px; margin: 0; } #local-seo .card p { margin: 0; color: var(--muted); font-size: 15px; }
+#local-seo .checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 24px; }
+#local-seo .checks li { position: relative; padding-left: 24px; } #local-seo .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+@media (max-width: 760px) { .grid2, #local-seo .checks { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html">Zahir <span>Islam</span></a>
+    <a class="back" href="index.html">&larr; Home</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Free tools</span>
+    <h1>Free tools for <em>smarter local marketing.</em></h1>
+    <p class="lede">Five simple tools I use with clients, free for you. Everything runs in your browser, and nothing you type is saved or sent anywhere.</p>
+    <div class="toolnav">
+      <a class="card result-card" href="#local-seo"><span class="n">New</span><h3>Local SEO Tool</h3></a>
+      <a class="card result-card" href="#roi"><span class="n">Tool 1</span><h3>Legal Lead ROI Calculator</h3></a>
+      <a class="card result-card" href="#gmb"><span class="n">Tool 2</span><h3>GMB Health &amp; Review Velocity</h3></a>
+      <a class="card result-card" href="#schema"><span class="n">Tool 3</span><h3>Schema Markup Generator</h3></a>
+      <a class="card result-card" href="#fanout"><span class="n">Tool 4</span><h3>Fan Out Query Research</h3></a>
+    </div>
+  </div>
+</header>
+
+<section id="local-seo">
+  <div class="wrap">
+    <span class="eyebrow">Local SEO Tool · Free account</span>
+    <h2>See where you rank on Google Maps, street by street</h2>
+    <div class="prose"><p>Your Google Maps ranking changes depending on where the customer is standing. The Local SEO Tool checks your ranking for a keyword at every point of a grid around your business, so you can see exactly where you show up and where competitors win.</p></div>
+    <div class="tool">
+      <div class="grid2">
+        <div class="card"><span class="n">Step 1</span><h3>Sign up free</h3><p>Create an account with your name and email.</p></div>
+        <div class="card"><span class="n">Step 2</span><h3>Connect your business</h3><p>Search your business name and pick it from Google Maps.</p></div>
+        <div class="card"><span class="n">Step 3</span><h3>Choose a keyword and grid</h3><p>For example "restaurant near me", a 9 &times; 9 grid with points 2 miles apart.</p></div>
+        <div class="card"><span class="n">Step 4</span><h3>See your ranking map</h3><p>Every point shows your rank, colour-coded, with average rank and the share of points where you're in the top 3.</p></div>
+      </div>
+      <ul class="checks">
+        <li>Grid sizes 3 &times; 3 up to 9 &times; 9</li>
+        <li>Point spacing from 0.5 to 3 miles</li>
+        <li>Rank at every point, plus who ranks top 3 there</li>
+        <li>Scan history for each business and keyword</li>
+        <li>5 free scans every month</li>
+        <li>Up to 3 businesses per account</li>
+      </ul>
+      <div class="row" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-gold" href="local-seo-tool/register.php">Sign up free</a>
+        <a class="btn btn-ghost" href="local-seo-tool/login.php">Log in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roi">
+  <div class="wrap">
+    <span class="eyebrow">Tool 1</span>
+    <h2>Legal Lead ROI Calculator</h2>
+    <div class="prose"><p>See what your marketing spend returns for a law firm. Enter your numbers and the results update instantly.</p></div>
+    <div class="tool">
+      <div class="form">
+        <label for="r-spend">Monthly ad spend (৳)<input id="r-spend" type="number" min="0" value="50000"></label>
+        <label for="r-cpl">Cost per lead (৳)<input id="r-cpl" type="number" min="1" value="1000"></label>
+        <label for="r-consult">Leads that book a consultation (%)<input id="r-consult" type="number" min="0" max="100" value="40"></label>
+        <label for="r-sign">Consultations that sign (%)<input id="r-sign" type="number" min="0" max="100" value="30"></label>
+        <label for="r-fee" class="full">Average fee per signed case (৳)<input id="r-fee" type="number" min="0" value="40000"></label>
+      </div>
+      <div class="out">
+        <div><span>Leads / month</span><b id="o-leads">0</b></div>
+        <div><span>Signed cases</span><b id="o-cases">0</b></div>
+        <div><span>Revenue</span><b id="o-rev">৳0</b></div>
+        <div><span>ROI</span><b id="o-roi">0%</b></div>
+      </div>
+      <p class="verdict" id="o-cpa"></p>
+    </div>
+  </div>
+</section>
+
+<section id="gmb">
+  <div class="wrap">
+    <span class="eyebrow">Tool 2</span>
+    <h2>GMB Health &amp; Review Velocity Monitor</h2>
+    <div class="prose"><p>Check how complete your Google Business Profile is and whether you're getting reviews fast enough to keep up with competitors.</p></div>
+    <div class="tool">
+      <div class="form">
+        <label for="g-rating">Your star rating<input id="g-rating" type="number" step="0.1" min="1" max="5" value="4.4"></label>
+        <label for="g-total">Total reviews<input id="g-total" type="number" min="0" value="85"></label>
+        <label for="g-recent">New reviews in the last 30 days<input id="g-recent" type="number" min="0" value="4"></label>
+        <label for="g-comp">Top competitor's reviews in the last 30 days<input id="g-comp" type="number" min="0" value="10"></label>
+      </div>
+      <div class="boxes" role="group" aria-label="Profile checklist">
+        <label><input type="checkbox" class="g-chk" checked> Correct primary category</label>
+        <label><input type="checkbox" class="g-chk" checked> Opening hours set</label>
+        <label><input type="checkbox" class="g-chk"> Services or products listed</label>
+        <label><input type="checkbox" class="g-chk" checked> 10+ photos</label>
+        <label><input type="checkbox" class="g-chk"> Posted in the last 7 days</label>
+        <label><input type="checkbox" class="g-chk"> Replied to every review</label>
+        <label><input type="checkbox" class="g-chk" checked> Website linked</label>
+        <label><input type="checkbox" class="g-chk"> Business description written</label>
+      </div>
+      <div class="meter" aria-hidden="true"><i id="g-bar"></i></div>
+      <div class="out">
+        <div><span>Health score</span><b id="g-score">0</b></div>
+        <div><span>Reviews / month</span><b id="g-vel">0</b></div>
+        <div><span>Vs competitor</span><b id="g-gap">0</b></div>
+        <div><span>Months to +50 reviews</span><b id="g-months">0</b></div>
+      </div>
+      <p class="verdict" id="g-tip"></p>
+    </div>
+  </div>
+</section>
+
+<section id="schema">
+  <div class="wrap">
+    <span class="eyebrow">Tool 3</span>
+    <h2>Schema Markup Generator</h2>
+    <div class="prose"><p>Create LocalBusiness schema (JSON-LD) for your website. Paste the result into your page's &lt;head&gt; to help Google and AI tools understand your business.</p></div>
+    <div class="tool">
+      <div class="form">
+        <label for="s-type">Business type<select id="s-type">
+          <option>LocalBusiness</option><option>Restaurant</option><option>LegalService</option><option>Dentist</option><option>MedicalClinic</option><option>RealEstateAgent</option><option>EducationalOrganization</option><option>Store</option><option>ProfessionalService</option>
+        </select></label>
+        <label for="s-name">Business name<input id="s-name" value="Example Business"></label>
+        <label for="s-url">Website<input id="s-url" value="https://example.com"></label>
+        <label for="s-phone">Phone<input id="s-phone" value="+8801000000000"></label>
+        <label for="s-street">Street address<input id="s-street" value="House 1, Road 2"></label>
+        <label for="s-city">City<input id="s-city" value="Dhaka"></label>
+        <label for="s-zip">Postal code<input id="s-zip" value="1212"></label>
+        <label for="s-country">Country code<input id="s-country" value="BD"></label>
+        <label for="s-hours">Opening hours<input id="s-hours" value="Mo-Sa 09:00-21:00"></label>
+        <label for="s-price">Price range<input id="s-price" value="$$"></label>
+        <label for="s-same" class="full">Social profiles (one per line)<textarea id="s-same" rows="3">https://www.facebook.com/example</textarea></label>
+      </div>
+      <pre class="code" id="s-out"></pre>
+      <div class="row" style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" class="btn btn-gold" id="s-copy">Copy schema</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="fanout">
+  <div class="wrap">
+    <span class="eyebrow">Tool 4</span>
+    <h2>Fan Out Query Research</h2>
+    <div class="prose"><p>AI search tools break one question into many smaller searches, called "fan-out" queries. Enter a topic to see the related questions your content should answer.</p></div>
+    <div class="tool">
+      <div class="form">
+        <label for="f-kw">Service or topic<input id="f-kw" value="treadmill"></label>
+        <label for="f-loc">Location (optional)<input id="f-loc" value="Dhaka"></label>
+      </div>
+      <div class="qgroups" id="f-out"></div>
+      <p class="note">These are idea starters built from common search patterns, not search volume data. Check them in Google Search Console or a keyword tool.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="callout">
+      <h2>Want me to do this for your business?</h2>
+      <p class="prose">These tools show the basics. Message me on WhatsApp for a free, full audit.</p>
+      <div class="row">
+        <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir%2C%20I%20used%20your%20free%20tools%20and%20would%20like%20a%20free%20audit." target="_blank" rel="noopener">Get a free audit</a>
+        <a class="btn btn-ghost" href="index.html#work">See case studies</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var n = function (id) { var v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+  var money = function (v) { return '৳' + Math.round(v).toLocaleString('en-IN'); };
+
+
+  function roi() {
+    var spend = n('r-spend'), cpl = Math.max(n('r-cpl'), 1);
+    var leads = spend / cpl, cases = leads * n('r-consult') / 100 * n('r-sign') / 100, rev = cases * n('r-fee');
+    var r = spend > 0 ? (rev - spend) / spend * 100 : 0;
+    $('o-leads').textContent = leads.toFixed(1);
+    $('o-cases').textContent = cases.toFixed(1);
+    $('o-rev').textContent = money(rev);
+    $('o-roi').textContent = Math.round(r) + '%';
+    $('o-cpa').textContent = cases > 0 ? 'Cost per signed case: ' + money(spend / cases) + '. ' + (r >= 0 ? 'Every ৳1 spent returns about ৳' + (rev / spend).toFixed(2) + ' in fees.' : 'You are spending more than you earn back. Lower the cost per lead or raise the consultation and signing rates.') : 'Enter your numbers to see the result.';
+  }
+  ['r-spend','r-cpl','r-consult','r-sign','r-fee'].forEach(function (id) { $(id).addEventListener('input', roi); });
+  roi();
+
+  function gmb() {
+    var chk = document.querySelectorAll('.g-chk'), done = 0;
+    chk.forEach(function (c) { if (c.checked) done++; });
+    var rating = n('g-rating'), recent = n('g-recent'), comp = n('g-comp');
+    var score = Math.round(done / chk.length * 50 + Math.min(Math.max((rating - 3) / 2, 0), 1) * 20 + Math.min(recent / Math.max(comp, 1), 1) * 30);
+    $('g-score').textContent = score + '/100';
+    $('g-bar').style.width = score + '%';
+    $('g-vel').textContent = recent;
+    var gap = recent - comp;
+    $('g-gap').textContent = (gap > 0 ? '+' : '') + gap;
+    $('g-months').textContent = recent > 0 ? Math.ceil(50 / recent) : '∞';
+    var tips = [];
+    if (done < chk.length) tips.push('Complete the ' + (chk.length - done) + ' unchecked profile items.');
+    if (gap < 0) tips.push('Ask for about ' + (-gap) + ' more reviews a month to match your top competitor.');
+    if (rating < 4.5) tips.push('Aim for a 4.5+ rating by asking happy customers first and replying to every review.');
+    $('g-tip').textContent = tips.length ? tips.join(' ') : 'Great profile. Keep posting weekly and keep reviews coming.';
+  }
+  document.querySelectorAll('#gmb input').forEach(function (el) { el.addEventListener('input', gmb); el.addEventListener('change', gmb); });
+  gmb();
+
+  function schema() {
+    var same = $('s-same').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+    var o = {
+      '@context': 'https://schema.org', '@type': $('s-type').value, name: $('s-name').value, url: $('s-url').value, telephone: $('s-phone').value,
+      address: { '@type': 'PostalAddress', streetAddress: $('s-street').value, addressLocality: $('s-city').value, postalCode: $('s-zip').value, addressCountry: $('s-country').value },
+      openingHours: $('s-hours').value, priceRange: $('s-price').value
+    };
+    if (same.length) o.sameAs = same;
+    Object.keys(o).forEach(function (k) { if (o[k] === '') delete o[k]; });
+    $('s-out').textContent = '<script type="application/ld+json">\n' + JSON.stringify(o, null, 2) + '\n</scr' + 'ipt>';
+  }
+  document.querySelectorAll('#schema input, #schema select, #schema textarea').forEach(function (el) { el.addEventListener('input', schema); el.addEventListener('change', schema); });
+  schema();
+  $('s-copy').addEventListener('click', function () {
+    var btn = this, text = $('s-out').textContent;
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy schema'; }, 1500); };
+    var sel = function () { var r = document.createRange(); r.selectNodeContents($('s-out')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected, press Ctrl+C'; };
+    try { navigator.clipboard.writeText(text).then(done, sel); } catch (e) { sel(); }
+  });
+
+  function fanout() {
+    var k = $('f-kw').value.trim() || 'service', loc = $('f-loc').value.trim();
+    var at = loc ? ' in ' + loc : '', near = loc ? ' in ' + loc : ' near me';
+    var groups = {
+      'Price & cost': ['how much does ' + k + ' cost' + at, k + ' price' + at, 'cheap ' + k + at, 'is ' + k + ' worth the money'],
+      'Comparisons': ['best ' + k + at, k + ' vs alternatives', 'which ' + k + ' should I choose', 'top rated ' + k + at],
+      'How-to & questions': ['what is ' + k, 'how to choose a ' + k, 'how does ' + k + ' work', 'what to look for in a ' + k],
+      'Local & buying intent': [k + near, 'buy ' + k + at, k + ' shop' + at, k + ' delivery' + at],
+      'Trust & reviews': [k + ' reviews', 'is ' + k + ' safe', k + ' problems and complaints', k + ' warranty'],
+      'Follow-up questions': ['how long does a ' + k + ' last', k + ' maintenance tips', k + ' for beginners', 'common mistakes with ' + k]
+    };
+    var out = $('f-out'); out.textContent = '';
+    Object.keys(groups).forEach(function (g) {
+      var d = document.createElement('div'), h = document.createElement('h4'), ul = document.createElement('ul');
+      h.textContent = g;
+      groups[g].forEach(function (q) { var li = document.createElement('li'); li.textContent = q; ul.appendChild(li); });
+      d.appendChild(h); d.appendChild(ul); out.appendChild(d);
+    });
+  }
+  ['f-kw','f-loc'].forEach(function (id) { $(id).addEventListener('input', fanout); });
+  fanout();
+})();
+</script>
+</body>
+</html>

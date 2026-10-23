@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zahir Islam</title>
+<meta name="google-site-verification" content="lSBYYFUpgbBjIemP_XECebpNcKCFX0n-1xBT875Vl9I" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: dark navy "ad-account" world — a hero that reads like a live campaign report, then a single column of sections on a 1120px grid. Gold is reserved for results and actions. */
+:root {
+  --navy: #171642;
+  --navy-2: #1F1D52;
+  --navy-3: #2F2D5C;
+  --gold: #FCB814;
+  --gold-deep: #D09818;
+  --silver: #D2D2DA;
+  --white: #FFFFFF;
+
+  --bg: var(--navy);
+  --surface: var(--navy-2);
+  --line: var(--navy-3);
+  --fg: var(--white);
+  --muted: #A9A8C4;
+  --accent: var(--gold);
+  --accent-ink: var(--navy);
+  --good: #4ADE9B;
+
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+section { padding-block: 88px; border-top: 1px solid var(--line); }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.section-head { display: grid; gap: 12px; max-width: 640px; margin-bottom: 48px; }
+.section-head h2 { font-size: clamp(32px, 4.4vw, 48px); }
+.section-head p { color: var(--muted); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+/* sample notice */
+.notice { background: var(--accent); color: var(--accent-ink); font-size: 14px; text-align: center; padding: 8px 16px; font-weight: 500; }
+
+/* nav */
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 800; font-size: 22px; text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+.nav-links a { text-decoration: none; color: var(--muted); transition: color .2s; }
+.nav-links a:hover { color: var(--fg); }
+.has-menu { position: relative; }
+.caret { font-size: 11px; margin-left: 2px; }
+.submenu { position: absolute; top: 100%; left: -16px; margin: 0; padding: 10px 0; list-style: none; min-width: 300px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 20px 40px -20px rgb(0 0 0 / .6); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity .15s, transform .15s, visibility .15s; z-index: 20; }
+.has-menu::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px; }
+.submenu { top: calc(100% + 14px); }
+.has-menu:hover .submenu, .has-menu:focus-within .submenu { opacity: 1; visibility: visible; transform: translateY(0); }
+.has-menu:hover > a, .has-menu:focus-within > a { color: var(--accent); }
+.submenu a { display: block; padding: 9px 18px; font-size: 16px; color: var(--fg); white-space: nowrap; }
+.submenu a:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: var(--f-body); transition: transform .15s, background .2s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border-color: var(--line); color: var(--fg); background: transparent; }
+.btn-ghost:hover { border-color: var(--accent); }
+nav .btn { padding: 9px 16px; }
+
+/* hero */
+.hero { border-top: 0; padding-block: 64px 104px; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(42px, 6.4vw, 76px); font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-copy { display: grid; gap: 24px; min-width: 0; }
+.hero-copy > p { font-size: 19px; color: var(--muted); max-width: 520px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.utm { font-family: var(--f-mono); font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.utm b { color: var(--accent); font-weight: 500; }
+
+/* hero photo */
+.hero-visual { position: relative; min-width: 0; display: grid; justify-items: center; }
+.photo-frame { position: relative; width: min(100%, 440px); aspect-ratio: 786 / 808; }
+.photo-frame::before { content: ""; position: absolute; inset: 14% 4% 0; border-radius: 220px 220px 24px 24px; background: linear-gradient(170deg, var(--accent), var(--gold-deep)); }
+.photo-frame img { position: relative; width: 100%; height: 100%; object-fit: contain; object-position: bottom; display: block; border-radius: 0 0 24px 24px; }
+.hero-visual .report { position: absolute; left: 0; bottom: -28px; width: min(300px, 78%); padding: 18px; gap: 12px; }
+.hero-visual .kpis { grid-template-columns: 1fr 1fr; }
+.hero-visual .kpi .val { font-size: 26px; }
+
+/* campaign report card */
+.report { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 20px; min-width: 0; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .5); }
+.report-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.report-top .mono { font-size: 12px; color: var(--muted); }
+.live { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 12px; color: var(--good); }
+.live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--good); animation: pulse 2s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+.kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.kpi { display: grid; gap: 2px; }
+.kpi .label { font-size: 12px; color: var(--muted); font-family: var(--f-mono); text-transform: uppercase; letter-spacing: .06em; }
+.kpi .val { font-family: var(--f-display); font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi .delta { font-family: var(--f-mono); font-size: 12px; color: var(--good); }
+.chart svg { width: 100%; height: auto; display: block; }
+.funnel { display: grid; gap: 8px; }
+.funnel-row { display: grid; grid-template-columns: 96px 1fr 64px; align-items: center; gap: 10px; font-size: 13px; }
+.funnel-row .bar { height: 10px; border-radius: 5px; background: var(--line); overflow: hidden; }
+.funnel-row .bar i { display: block; height: 100%; background: var(--accent); border-radius: 5px; }
+.funnel-row .mono { text-align: right; color: var(--muted); font-size: 12px; }
+
+/* stats */
+.stats { padding-block: 56px; }
+.stats .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.stat { display: grid; gap: 4px; }
+.stat .num { font-family: var(--f-display); font-size: clamp(36px, 4.6vw, 52px); font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1; }
+.stat p { color: var(--muted); font-size: 15px; }
+
+/* brands */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.filter { font-family: var(--f-body); font-size: 15px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; transition: border-color .2s, color .2s; }
+.filter span { font-size: 12px; opacity: .7; margin-left: 2px; }
+.filter:hover { color: var(--fg); }
+.filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.brands { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.brand { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: center; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); min-width: 0; }
+.brand-logo { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 18px; letter-spacing: .02em; background: var(--line); color: var(--accent); overflow: hidden; }
+.brand-logo img { width: 100%; height: 100%; object-fit: cover; display: block; background: #fff; }
+.brand.founder .brand-logo { background: var(--accent); color: var(--accent-ink); }
+.brand-text { min-width: 0; display: grid; gap: 2px; }
+.brand-name { font-weight: 700; font-size: 17px; line-height: 1.25; overflow-wrap: anywhere; }
+.brand-role { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+.brand.founder .brand-role { color: var(--accent); }
+.brand.has-case { padding: 0; display: block; }
+.brand-link { display: grid; height: 100%; grid-template-columns: 48px 1fr; gap: 14px; align-items: center; padding: 14px; text-decoration: none; color: inherit; border-radius: 14px; min-width: 0; }
+.brand.has-case { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transition: border-color .2s, transform .15s; }
+.brand.has-case:hover { border-color: var(--accent); transform: translateY(-1px); }
+.brand-case { font-size: 13px; font-weight: 700; color: var(--accent); margin-top: 2px; }
+.more-wrap { display: flex; justify-content: center; margin-top: 28px; }
+
+/* services */
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.service { background: var(--bg); padding: 32px 28px; display: grid; gap: 12px; align-content: start; min-width: 0; transition: background .2s; }
+.service:hover { background: var(--surface); }
+.service h3 { font-size: 22px; }
+.service p { color: var(--muted); font-size: 15px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip { font-family: var(--f-mono); font-size: 11.5px; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.ico { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+.ico svg { width: 22px; height: 22px; }
+
+/* case studies */
+.cases { display: grid; gap: 20px; }
+.case { display: grid; grid-template-columns: 1fr 1.3fr 220px; gap: 32px; align-items: center; padding: 32px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+.case > * { min-width: 0; }
+.case .tag { font-family: var(--f-mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.case h3 { font-size: 26px; margin-top: 6px; }
+.case p { color: var(--muted); font-size: 15px; }
+.case dl { display: grid; gap: 10px; margin: 0; }
+.case dt { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.case dd { margin: 0; font-size: 15px; }
+.case-link { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 700; text-decoration: none; }
+.case-link:hover { text-decoration: underline; }
+.case .result { text-align: right; }
+.case .result .big { font-family: var(--f-display); font-weight: 800; font-size: 56px; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+.case .result span { color: var(--muted); font-size: 14px; }
+
+/* process */
+.process { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.process li { display: grid; gap: 8px; align-content: start; padding-top: 18px; border-top: 2px solid var(--line); counter-increment: step; min-width: 0; }
+.process li::before { content: "0" counter(step); font-family: var(--f-mono); color: var(--accent); font-size: 13px; }
+.process li:first-child { border-top-color: var(--accent); }
+.process h3 { font-size: 20px; }
+.process p { color: var(--muted); font-size: 14.5px; }
+
+/* testimonials */
+.quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.quote { border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: grid; gap: 20px; align-content: space-between; }
+.quote blockquote { margin: 0; font-family: var(--f-display); font-size: 21px; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
+.quote figcaption { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.quote figcaption b { display: block; font-weight: 600; }
+.quote figcaption span { color: var(--muted); }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--line); display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; color: var(--accent); flex-shrink: 0; }
+
+/* clients */
+.clients { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+.clients > .client { flex: 0 1 calc((100% - 40px) / 3); }
+.client { border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 22px; background: var(--surface); min-width: 0; }
+.client-top { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
+.client-top > div { min-width: 0; display: grid; gap: 8px; }
+.client-logo { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; background: #fff; display: block; }
+.client h3 { font-size: 20px; line-height: 1.2; text-wrap: pretty; }
+.client .chips { margin-top: 0; }
+.client-quote { margin: 0; font-family: var(--f-display); font-size: 19px; line-height: 1.45; position: relative; padding-top: 30px; }
+.client-quote::before { content: "\201C"; position: absolute; top: -14px; left: -2px; font-size: 64px; line-height: 1; color: var(--accent); }
+.client-person { margin-top: auto; display: flex; align-items: center; gap: 12px; font-size: 15px; padding-top: 18px; border-top: 1px solid var(--line); }
+.client-person b { display: block; font-weight: 700; }
+.client-person span:not(.avatar) { color: var(--muted); font-size: 14px; }
+@media (max-width: 960px) { .clients > .client { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 600px) { .clients > .client { flex-basis: 100%; } }
+
+/* tools */
+.tools { display: flex; flex-wrap: wrap; gap: 10px; }
+.tool { padding: 10px 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px; font-weight: 500; }
+
+/* about */
+.about .wrap { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+.portrait { aspect-ratio: 4/5; max-width: 100%; border-radius: 18px; background: linear-gradient(160deg, var(--surface), var(--line)); border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.about-copy { display: grid; gap: 20px; max-width: 640px; min-width: 0; }
+.about-copy p { color: var(--muted); }
+.timeline { display: grid; gap: 0; margin-top: 8px; }
+.timeline div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding-block: 12px; border-top: 1px solid var(--line); font-size: 15px; }
+.timeline .mono { color: var(--accent); font-size: 13px; padding-top: 2px; }
+
+/* contact */
+.contact .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; }
+.contact h2 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; }
+.contact-info { display: grid; gap: 20px; align-content: start; min-width: 0; }
+.contact-info > p { color: var(--muted); }
+.copyline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 15px; }
+.copy-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); width: 72px; }
+.copyline button { font-family: var(--f-mono); font-size: 12px; padding: 5px 10px; border-radius: 6px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.socials { display: flex; gap: 10px; flex-wrap: wrap; }
+form { display: grid; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px; min-width: 0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 500; }
+input, select, textarea { font: inherit; font-size: 15px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+textarea { min-height: 110px; resize: vertical; }
+#wa-submit { justify-content: center; }
+.form-hint { font-size: 14px; color: var(--muted); text-align: center; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .about .wrap, .contact .wrap { grid-template-columns: 1fr; }
+  .services { grid-template-columns: 1fr 1fr; }
+  .case { grid-template-columns: 1fr; gap: 20px; }
+  .case .result { text-align: left; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .stats .wrap { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .portrait { max-width: 260px; }
+}
+@media (max-width: 600px) {
+  section { padding-block: 64px; }
+  .services, .quotes, .process, .row2 { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .kpi .val { font-size: 26px; }
+  .timeline div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+.tools-grid { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 600px) { .tools-grid { grid-template-columns: 1fr; } }
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top">Zahir <span>Islam</span></a>
+    <ul class="nav-links">
+      <li class="has-menu">
+        <a href="#services" aria-haspopup="true">Services <span class="caret" aria-hidden="true">&#9662;</span></a>
+        <ul class="submenu" aria-label="Services">
+          <li><a href="service-local-seo.html">Local SEO</a></li>
+          <li><a href="service-google-business-profile.html">Google Business Profile Management</a></li>
+          <li><a href="service-ai-search.html">AI Search Optimization</a></li>
+          <li><a href="service-google-ads.html">Google Ads Management</a></li>
+          <li><a href="service-meta-ads.html">Meta Ads Management</a></li>
+          <li><a href="service-white-label-seo.html">White Label SEO for Agencies</a></li>
+          <li><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></li>
+        </ul>
+      </li>
+      <li><a href="#work">Case Studies</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+    <a class="btn btn-gold" href="#contact">Get a free audit</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Zahir Islam · Digital Marketer</span>
+      <h1>More traffic is easy. I grow <em>revenue.</em></h1>
+      <p>I help e-commerce and service brands turn search, social and paid ads into sales, with campaigns you can measure down to the last taka.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#contact">Book a strategy call</a>
+        <a class="btn btn-ghost" href="#work">See case studies</a>
+      </div>
+      <div class="utm">zahirislam.com/?utm_source=<b>google</b>&amp;utm_medium=<b>cpc</b>&amp;utm_campaign=<b>growth</b></div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="photo-frame"><img src="zahir.webp" alt="Zahir Islam" width="786" height="808"></div>
+      <aside class="report" aria-label="Sample campaign report">
+        <div class="report-top">
+          <span class="mono">Typical client results</span>
+          <span class="live">Tracking</span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><span class="label">ROAS</span><span class="val">4.5x</span><span class="delta">▲ from 1.5x</span></div>
+          <div class="kpi"><span class="label">Conv. rate</span><span class="val">8–10%</span><span class="delta">▲ conversions</span></div>
+        </div>
+        <div class="chart">
+          <svg viewBox="0 0 400 90" role="img" aria-label="Revenue trending up over 12 weeks">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="var(--accent)" stop-opacity=".35"/>
+                <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,80 L36,77 L72,78 L109,70 L145,67 L181,60 L218,55 L254,46 L290,41 L327,31 L363,25 L396,12 L396,88 L0,88 Z" fill="url(#g)"/>
+            <path d="M0,80 L36,77 L72,78 L109,70 L145,67 L181,60 L218,55 L254,46 L290,41 L327,31 L363,25 L396,12" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="396" cy="12" r="5" fill="var(--accent)"/>
+          </svg>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<section class="stats" aria-label="Results at a glance">
+  <div class="wrap">
+    <div class="stat"><span class="num">1.5x→4.5x</span><p>ROAS growth</p></div>
+    <div class="stat"><span class="num">8–10%</span><p>Conversion rate</p></div>
+    <div class="stat"><span class="num">700–800</span><p>Average calls per month</p></div>
+    <div class="stat"><span class="num">31+</span><p>Client brands</p></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Services</span>
+      <h2>One marketer for the whole funnel</h2>
+      <p>Pick one channel or hand over the full growth plan. Every engagement starts with an audit and ends with a report you can read.</p>
+    </div>
+    <div class="services">
+      <article class="service">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+        <h3>SEO</h3>
+        <p>Technical fixes, keyword strategy and content that ranks for searches your buyers actually make.</p>
+        <div class="chips"><span class="chip">Technical audit</span><span class="chip">On-page</span><span class="chip">Link building</span></div>
+      </article>
+      <article class="service">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+        <h3>Paid Ads</h3>
+        <p>Google, Meta and TikTok campaigns built around profit per order, not cheap clicks.</p>
+        <div class="chips"><span class="chip">Google Ads</span><span class="chip">Meta Ads</span><span class="chip">Retargeting</span></div>
+      </article>
+      <article class="service">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span>
+        <h3>Social Media</h3>
+        <p>Content calendars, community management and creative that keeps your brand in the feed.</p>
+        <div class="chips"><span class="chip">Facebook</span><span class="chip">Instagram</span><span class="chip">LinkedIn</span></div>
+      </article>
+      <article class="service">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+        <h3>Content Marketing</h3>
+        <p>Blog posts, landing pages and guides written to rank and to convert.</p>
+        <div class="chips"><span class="chip">Blog strategy</span><span class="chip">Copywriting</span></div>
+      </article>
+      <article class="service">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <h3>Email Automation</h3>
+        <p>Welcome flows, abandoned-cart sequences and newsletters that bring buyers back.</p>
+        <div class="chips"><span class="chip">Klaviyo</span><span class="chip">Mailchimp</span></div>
+      </article>
+      <article class="service">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <h3>Analytics &amp; CRO</h3>
+        <p>GA4, tag setup and conversion tests so every decision is backed by data.</p>
+        <div class="chips"><span class="chip">GA4</span><span class="chip">GTM</span><span class="chip">A/B testing</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Case Studies</span>
+      <h2>Problems I've solved</h2>
+      <p>Each one starts with a number that needed to move.</p>
+    </div>
+    <div class="cases" id="case-list">
+      <article class="case">
+        <div>
+          <span class="tag">Education · London</span>
+          <h3>Ideal Centre for Tuition</h3>
+          <p>A London tuition centre that needed more enquiries from local parents before the new term.</p>
+          <a class="case-link" href="case-ideal-centre.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Meta lead ads, 12 Aug – 15 Sep 2026</dd></div>
+          <div><dt>Result</dt><dd>62 parent enquiries at £5.42 per lead, £335.99 total spend</dd></div>
+        </dl>
+        <div class="result"><div class="big">62</div><span>Leads in 35 days</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Real estate · Bangladesh</span>
+          <h3>Dreamway Holdings Ltd</h3>
+          <p>A property company that wanted serious buyers on a small ad budget.</p>
+          <a class="case-link" href="case-dreamway-holdings.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Meta lead form ads + Google Ads Demand Gen</dd></div>
+          <div><dt>Result</dt><dd>17,458 Meta leads at $2.27 each, 500+ converted, plus 65 Google conversions</dd></div>
+        </dl>
+        <div class="result"><div class="big">17.5K</div><span>Meta leads</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Education · Dhaka</span>
+          <h3>Pingu's English Kazipara</h3>
+          <p>A children's English school that wanted more admissions on a small budget.</p>
+          <a class="case-link" href="case-pingus-english.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Meta messaging ads + video</dd></div>
+          <div><dt>Result</dt><dd>215 parent conversations and 16 completed admissions from $86.72 spend</dd></div>
+        </dl>
+        <div class="result"><div class="big">16</div><span>Admissions</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce · SEO</span>
+          <h3>Anayase.com</h3>
+          <p>An online store that needed steady, free traffic from Google Search.</p>
+          <a class="case-link" href="case-anayase.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>700+ keywords in the top 10, 50.8K clicks and 2.64M impressions</dd></div>
+        </dl>
+        <div class="result"><div class="big">50.8K</div><span>Clicks from Google</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce · SEO</span>
+          <h3>ECO Crave World</h3>
+          <p>An eco home decor store that needed shoppers to find its jute rugs on Google.</p>
+          <a class="case-link" href="case-eco-crave.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO + buying-guide content</dd></div>
+          <div><dt>Result</dt><dd>600+ keywords in the top 10, 27.8K clicks and 4.29M impressions</dd></div>
+        </dl>
+        <div class="result"><div class="big">600+</div><span>Top 10 keywords</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Real estate · Lead generation</span>
+          <h3>New Home in Turkey</h3>
+          <p>A Turkish property company that needed buyer leads from Google.</p>
+          <a class="case-link" href="case-new-home-turkey.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Lead generation SEO, Jun 2025 – Mar 2026</dd></div>
+          <div><dt>Result</dt><dd>50+ leads every month, 5.56K clicks and 674K impressions</dd></div>
+        </dl>
+        <div class="result"><div class="big">50+</div><span>Leads a month</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Travel · Dhaka</span>
+          <h3>Meet and Greet BD</h3>
+          <p>An airport service in Dhaka that needed more people to call and book.</p>
+          <a class="case-link" href="case-meet-greet.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Meta call ads, Google Ads + Google Business Profile</dd></div>
+          <div><dt>Result</dt><dd>4,021 calls from Meta at $0.21 each, 350 Google Ads conversions, 4.8 stars from 147 reviews</dd></div>
+        </dl>
+        <div class="result"><div class="big">4,021</div><span>Phone calls</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Restaurant · Local SEO</span>
+          <h3>Raj Darbar Highway Restaurant</h3>
+          <p>A 24-hour highway restaurant that needed travellers to find it on Google Maps.</p>
+          <a class="case-link" href="case-raj-darbar.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Google Business Profile, May – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>3,731 interactions, growing from about 120 to over 1,000 a month, plus 164 calls</dd></div>
+        </dl>
+        <div class="result"><div class="big">9x</div><span>Monthly interactions</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Restaurant · Dubai</span>
+          <h3>Muhammad Iqbal Restaurant</h3>
+          <p>A 24-hour Pakistani restaurant in Business Bay that needed to win local searches.</p>
+          <a class="case-link" href="case-muhammad-iqbal.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>Google Ads + Google Business Profile</dd></div>
+          <div><dt>Result</dt><dd>15.9K Google Ads conversions at $0.41 each, plus 4,632 calls and 222K profile views</dd></div>
+        </dl>
+        <div class="result"><div class="big">4,632</div><span>Calls from Google</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce · SEO</span>
+          <h3>Fitnessmart.com.bd</h3>
+          <p>A gym equipment store that needed to rank for "price in Bangladesh" searches.</p>
+          <a class="case-link" href="case-fitnessmart.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO + link building</dd></div>
+          <div><dt>Result</dt><dd>96.2K clicks and 1.39M impressions in 6 months, average position 5.7</dd></div>
+        </dl>
+        <div class="result"><div class="big">96.2K</div><span>Clicks from Google</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Beauty · E-commerce SEO</span>
+          <h3>Golden Rose</h3>
+          <p>A cosmetics brand on Anayase.com that needed to rank for product price searches.</p>
+          <a class="case-link" href="case-golden-rose.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>6.93K clicks, 304K impressions, #1 for "golden rose foundation price in bangladesh"</dd></div>
+        </dl>
+        <div class="result"><div class="big">6.93K</div><span>Clicks from Google</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">Food · E-commerce SEO</span>
+          <h3>Olive Oils Land</h3>
+          <p>An Aegean olive oil brand on Anayase.com that needed to be seen in Google Search.</p>
+          <a class="case-link" href="case-olive-oils-land.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>253K impressions and 3.01K clicks at an average position of 6.4</dd></div>
+        </dl>
+        <div class="result"><div class="big">253K</div><span>Google impressions</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce SEO · Anayase.com</span>
+          <h3>Mycey</h3>
+          <p>A brand page on Anayase.com that needed to rank on Google.</p>
+          <a class="case-link" href="case-mycey.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>2.58K clicks and 140K impressions at an average position of 6.3</dd></div>
+        </dl>
+        <div class="result"><div class="big">140K</div><span>Google impressions</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce SEO · Anayase.com</span>
+          <h3>We Baby</h3>
+          <p>A brand page on Anayase.com that needed to rank on Google.</p>
+          <a class="case-link" href="case-we-baby.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>4.91K clicks and 116K impressions at an average position of 9.5</dd></div>
+        </dl>
+        <div class="result"><div class="big">4.91K</div><span>Clicks from Google</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce SEO · Anayase.com</span>
+          <h3>Bebsi</h3>
+          <p>A brand page on Anayase.com that needed to rank on Google.</p>
+          <a class="case-link" href="case-bebsi.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>1.49K clicks and 49.8K impressions at an average position of 7.3</dd></div>
+        </dl>
+        <div class="result"><div class="big">1.49K</div><span>Clicks from Google</span></div>
+      </article>
+      <article class="case">
+        <div>
+          <span class="tag">E-commerce SEO · Anayase.com</span>
+          <h3>Gold Care</h3>
+          <p>A brand page on Anayase.com that needed to rank on Google.</p>
+          <a class="case-link" href="case-gold-care.html">Read case study &rarr;</a>
+        </div>
+        <dl>
+          <div><dt>Channel</dt><dd>E-commerce SEO, Jun 2025 – Oct 2026</dd></div>
+          <div><dt>Result</dt><dd>1.48K clicks and 134K impressions at an average position of 9.3</dd></div>
+        </dl>
+        <div class="result"><div class="big">134K</div><span>Google impressions</span></div>
+      </article>
+      
+    </div>
+    <div class="more-wrap"><button type="button" class="btn btn-ghost" id="case-more" aria-controls="case-list" aria-expanded="false">See more case studies</button></div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Process</span>
+      <h2>How we'll work together</h2>
+    </div>
+    <ol class="process">
+      <li><h3>Audit</h3><p>I review your site, ad accounts and analytics to find where money leaks.</p></li>
+      <li><h3>Strategy</h3><p>A 90-day plan with channels, budget and target numbers.</p></li>
+      <li><h3>Launch</h3><p>Campaigns, content and tracking go live.</p></li>
+      <li><h3>Report</h3><p>A weekly dashboard and a monthly call in plain language.</p></li>
+      <li><h3>Optimize</h3><p>Cut what doesn't pay, scale what does.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="clients">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Testimonials</span>
+      <h2>What clients say</h2>
+      <p>Owners, directors and managers who trust me with their growth.</p>
+    </div>
+    <div class="clients">
+      <article class="client">
+        <div class="client-top">
+          <img class="client-logo" src="dreamway-holdings.webp" alt="Dreamway Holdings Ltd logo" width="128" height="128" loading="lazy">
+          <div><h3>Dreamway Holdings Ltd</h3><div class="chips"><span class="chip">Meta Ads</span><span class="chip">Google Ads</span></div></div>
+        </div>
+        <blockquote class="client-quote">Zahir managed our Meta and Google Ads with real care for our budget. He explained every report clearly, and we started getting serious property inquiries instead of random clicks.</blockquote>
+        <div class="client-person"><span class="avatar">MR</span><div><b>Mohammad Raj</b><span>Chairman, Dreamway Holdings Ltd</span></div></div>
+      </article>
+      <article class="client">
+        <div class="client-top">
+          <img class="client-logo" src="meet-greet.webp" alt="Meet and Greet BD logo" width="128" height="128" loading="lazy">
+          <div><h3>Meet and Greet BD</h3><div class="chips"><span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">SEO</span></div></div>
+        </div>
+        <blockquote class="client-quote">Zahir handled our ads and SEO together, so everything worked as one plan. He is quick to respond and always brings new ideas to get us more bookings.</blockquote>
+        <div class="client-person"><span class="avatar">MH</span><div><b>Mahmudul Hasan</b><span>Country Manager, Meet and Greet BD</span></div></div>
+      </article>
+      <article class="client">
+        <div class="client-top">
+          <img class="client-logo" src="muhammad-iqbal.webp" alt="Muhammad Iqbal Restaurant logo" width="128" height="128" loading="lazy">
+          <div><h3>Muhammad Iqbal Restaurant</h3><div class="chips"><span class="chip">Local SEO</span></div></div>
+        </div>
+        <blockquote class="client-quote">After Zahir worked on our Google listing, more people started finding us on Google Maps and calling for orders. He made local search simple for us.</blockquote>
+        <div class="client-person"><span class="avatar">SA</span><div><b>Syed Saeed Ahmad</b><span>Owner, Muhammad Iqbal Restaurant</span></div></div>
+      </article>
+      <article class="client">
+        <div class="client-top">
+          <img class="client-logo" src="ideal-centre.webp" alt="Ideal Centre for Tuition logo" width="128" height="128" loading="lazy">
+          <div><h3>Ideal Centre for Tuition</h3><div class="chips"><span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">SEO</span></div></div>
+        </div>
+        <blockquote class="client-quote">Zahir understood that parents need trust before they enroll. His campaigns brought us real student inquiries, and our website now shows up when parents search for tuition.</blockquote>
+        <div class="client-person"><span class="avatar">JH</span><div><b>Jummer Hossain</b><span>Owner, Ideal Centre for Tuition</span></div></div>
+      </article>
+      <article class="client">
+        <div class="client-top">
+          <img class="client-logo" src="buildtech-hub.webp" alt="Build Tech Hub logo" width="128" height="128" loading="lazy">
+          <div><h3>Build Tech Hub</h3><div class="chips"><span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">SEO</span></div></div>
+        </div>
+        <blockquote class="client-quote">Zahir is honest about what works and what doesn&#39;t. He cut wasted ad spend, improved our search visibility and kept us updated every step of the way.</blockquote>
+        <div class="client-person"><span class="avatar">RN</span><div><b>Reazul Nilabru</b><span>Director, Build Tech Hub</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Toolkit</span>
+      <h2>Tools I work in every day</h2>
+    </div>
+    <div class="tools">
+      <span class="tool">Google Analytics 4</span><span class="tool">Google Search Console</span><span class="tool">Google Tag Manager</span>
+      <span class="tool">Google Ads</span><span class="tool">Meta Ads Manager</span><span class="tool">Ahrefs</span><span class="tool">Semrush</span>
+      <span class="tool">Looker Studio</span><span class="tool">HubSpot</span><span class="tool">Klaviyo</span><span class="tool">Canva</span><span class="tool">WordPress</span>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="portrait"><img src="zahir.webp" alt="Zahir Islam" width="786" height="808" loading="lazy"></div>
+    <div class="about-copy">
+      <span class="eyebrow">About</span>
+      <h2 style="font-size:clamp(32px,4.4vw,48px)">Hi, I'm Zahir.</h2>
+      <p>I started in marketing by running ads for small online shops and learned early that clicks don't pay the bills. Since then I've focused on one thing: marketing that shows up in your bank account.</p>
+      <p>I work with e-commerce, lead-generation and local businesses in Bangladesh and abroad. I also co-founded three companies of my own.</p>
+      <div class="timeline">
+        <div><span class="mono">Co-Founder &amp; CEO</span><span>Mirror Web Image</span></div>
+        <div><span class="mono">Co-Founder &amp; CEO</span><span>Sale Bari</span></div>
+        <div><span class="mono">Co-Founder &amp; CEO</span><span>Shokher Bari Interior Design</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info">
+      <span class="eyebrow">Contact</span>
+      <h2>Let's grow your <span style="color:var(--accent)">numbers.</span></h2>
+      <p>Tell me about your business and I'll send a free audit with three quick wins within 48 hours.</p>
+      <div class="copyline"><span class="copy-label">Email</span><span id="email">islamzahirul7048@gmail.com</span><button type="button" class="copy" data-target="email">Copy</button></div>
+      <div class="copyline"><span class="copy-label">WhatsApp</span><span id="phone">+880 1644-842785</span><button type="button" class="copy" data-target="phone">Copy</button></div>
+      <a class="btn btn-gold" href="https://wa.me/8801644842785" target="_blank" rel="noopener" style="justify-self:start">Message on WhatsApp</a>
+      <div class="socials">
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/zahirul-islam-digital-marketing-consultant/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://www.facebook.com/mdzahirulislamseo" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/zahirashad22/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn btn-ghost" href="https://x.com/ZahirulIsl78" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <form id="lead">
+      <div class="row2">
+        <label for="f-name">Name<input id="f-name" required placeholder="Your name"></label>
+        <label for="f-email">Email<input id="f-email" type="email" required placeholder="you@company.com"></label>
+      </div>
+      <label for="f-site">Website<input id="f-site" placeholder="yourbrand.com"></label>
+      <div class="row2">
+        <label for="f-service">I need help with<select id="f-service"><option>SEO</option><option>Paid Ads</option><option>Social Media</option><option>Full growth plan</option></select></label>
+        <label for="f-budget">Monthly budget<select id="f-budget"><option>Under ৳50,000</option><option>৳50,000 – ৳2 lakh</option><option>৳2 lakh+</option></select></label>
+      </div>
+      <label for="f-msg">Message<textarea id="f-msg" placeholder="What are you trying to grow?"></textarea></label>
+      <a class="btn btn-gold" id="wa-submit" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Request free audit on WhatsApp</a>
+      <p class="form-hint">Opens WhatsApp with your details filled in. Just press send.</p>
+    </form>
+  </div>
+</section>
+
+<section id="free-tools">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Free tools</span>
+      <h2>Free tools for smarter local marketing</h2>
+      <p>Simple calculators and generators I use with clients. Free to use, right in your browser.</p>
+    </div>
+    <div class="services tools-grid">
+      <a class="service" href="tools.html#local-seo" style="text-decoration:none;color:inherit;grid-column:1 / -1"><h3>Local SEO Tool</h3><p>Sign up free, connect your business and see your Google Maps ranking at every point of a grid around you, for any keyword.</p></a>
+      <a class="service" href="tools.html#roi" style="text-decoration:none;color:inherit"><h3>Legal Lead ROI Calculator</h3><p>See how many signed cases and how much revenue your ad spend brings in.</p></a>
+      <a class="service" href="tools.html#gmb" style="text-decoration:none;color:inherit"><h3>GMB Health &amp; Review Velocity Monitor</h3><p>Score your Google Business Profile and compare your review pace with competitors.</p></a>
+      <a class="service" href="tools.html#schema" style="text-decoration:none;color:inherit"><h3>Schema Markup Generator</h3><p>Create LocalBusiness schema for your website in seconds.</p></a>
+      <a class="service" href="tools.html#fanout" style="text-decoration:none;color:inherit"><h3>Fan Out Query Research</h3><p>Find the related questions AI search tools ask about your topic.</p></a>
+    </div>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Brands</span>
+      <h2>Companies I've worked with</h2>
+      <p>E-commerce stores, lead-generation businesses, restaurants and local brands in Bangladesh and abroad, plus three companies I co-founded.</p>
+    </div>
+    <div class="filters" role="tablist" aria-label="Filter brands">
+      <button type="button" class="filter" data-f="all" aria-pressed="true">All <span class="mono" data-count="all"></span></button>
+      <button type="button" class="filter" data-f="ecom" aria-pressed="false">E-commerce SEO <span class="mono" data-count="ecom"></span></button>
+      <button type="button" class="filter" data-f="lead" aria-pressed="false">Lead Generation SEO <span class="mono" data-count="lead"></span></button>
+      <button type="button" class="filter" data-f="ads" aria-pressed="false">Ads + SEO <span class="mono" data-count="ads"></span></button>
+      <button type="button" class="filter" data-f="local" aria-pressed="false">Local SEO <span class="mono" data-count="local"></span></button>
+      <button type="button" class="filter" data-f="founder" aria-pressed="false">Founder <span class="mono" data-count="founder"></span></button>
+    </div>
+    <ul class="brands" id="brand-grid"></ul>
+    <div class="more-wrap"><button type="button" class="btn btn-ghost" id="brand-more" aria-controls="brand-grid" aria-expanded="false">See more</button></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('lead');
+  var link = document.getElementById('wa-submit');
+  var val = function (id) { return document.getElementById(id).value.trim(); };
+  function update() {
+    var lines = ['Hi Zahir, I would like a free audit.'];
+    if (val('f-name')) lines.push('Name: ' + val('f-name'));
+    if (val('f-email')) lines.push('Email: ' + val('f-email'));
+    if (val('f-site')) lines.push('Website: ' + val('f-site'));
+    lines.push('Need help with: ' + val('f-service'));
+    lines.push('Monthly budget: ' + val('f-budget'));
+    if (val('f-msg')) lines.push('Message: ' + val('f-msg'));
+    link.href = 'https://wa.me/8801644842785?text=' + encodeURIComponent(lines.join('\n'));
+  }
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+  update();
+})();
+(function () {
+  var LIMIT = 3, open = false;
+  var cases = document.querySelectorAll('#case-list > .case');
+  var btn = document.getElementById('case-more');
+  function apply() {
+    cases.forEach(function (c, i) { c.hidden = !open && i >= LIMIT; });
+    btn.parentNode.hidden = cases.length <= LIMIT;
+    btn.textContent = open ? 'See fewer case studies' : 'See more case studies (' + (cases.length - LIMIT) + ')';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', function () { open = !open; apply(); });
+  apply();
+})();
+var CASES = {
+  'Ideal Centre for Tuition': 'case-ideal-centre.html',
+  'Dreamway Holdings': 'case-dreamway-holdings.html',
+  "Pingu's English Kazipara": 'case-pingus-english.html',
+  'Anayase.com': 'case-anayase.html',
+  'ECO Crave World': 'case-eco-crave.html',
+  'newhomeinturkey.com': 'case-new-home-turkey.html',
+  'Meet and Greet BD': 'case-meet-greet.html',
+  'Raj Darbar Highway Restaurant': 'case-raj-darbar.html',
+  'Muhammad Iqbal Restaurant': 'case-muhammad-iqbal.html',
+  'Fitnessmart.com.bd': 'case-fitnessmart.html',
+  'Golden Rose': 'case-golden-rose.html',
+  'Olive Oils Land': 'case-olive-oils-land.html',
+  'Mycey': 'case-mycey.html',
+  'We Baby': 'case-we-baby.html',
+  'Bebsi': 'case-bebsi.html',
+  'Gold Care': 'case-gold-care.html'
+};
+var BRANDS = [
+  ['Mirror Web Image', 'Co-Founder & CEO', 'founder', 'mirrorweb-icon.webp'],
+  ['Sale Bari', 'Co-Founder & CEO', 'founder', 'sale-bari.webp'],
+  ['Shokher Bari Interior Design', 'Co-Founder & CEO', 'founder', 'shokher-bari.webp'],
+  ['Anayase.com', 'E-commerce SEO', 'ecom', 'anayase.webp'],
+  ['Golden Rose', 'E-commerce SEO', 'ecom', 'golden-rose.webp'],
+  ['Olive Oils Land', 'E-commerce SEO', 'ecom', 'olive-oils-land.webp'],
+  ['Mycey', 'E-commerce SEO', 'ecom', 'mycey.webp'],
+  ['We Baby', 'E-commerce SEO', 'ecom', 'we-baby.webp'],
+  ['Bebsi', 'E-commerce SEO', 'ecom', 'bebsi-logo.png'],
+  ['Gold Care', 'E-commerce SEO', 'ecom', 'gold-care.webp'],
+  ['Fitnessmart.com.bd', 'E-commerce SEO', 'ecom', 'fitness-mart.webp'],
+  ['ECO Crave World', 'Meta, Google, E-commerce SEO', 'ecom ads', 'eco-crave.webp'],
+  ['newhomeinturkey.com', 'Lead Generation SEO', 'lead', 'new-home-turkey.webp'],
+  ['capitolestate.com', 'Lead Generation SEO', 'lead'],
+  ['Aan Nahl Software', 'Lead Generation SEO', 'lead', 'aan-nahl.webp'],
+  ['Moving Relocation', 'Lead Generation SEO', 'lead', 'moving-relocation.webp'],
+  ['Buzz Moving', 'Lead Generation SEO', 'lead', 'buzz-moving.webp'],
+  ['Meet and Greet BD', 'Meta Ads, Google Ads, SEO', 'ads', 'meet-greet.webp'],
+  ['Build Tech Hub', 'Meta Ads, Google Ads, SEO', 'ads', 'buildtech-hub.webp'],
+  ['Ideal Centre for Tuition', 'Meta Ads, Google Ads, SEO', 'ads', 'ideal-centre.webp'],
+  ["Pingu's English Kazipara", 'Meta Ads, Google Ads, SEO', 'ads', 'pingus-english.webp'],
+  ['Dreamway Holdings', 'Meta Ads, Google Ads, SEO', 'ads', 'dreamway-holdings.webp'],
+  ['Dreamway Construction', 'Meta Ads, Google Ads, SEO', 'ads', 'dreamway-construction.webp'],
+  ['ICON Interior', 'Meta Ads, Google Ads, SEO', 'ads', 'icon-interior.webp'],
+  ['Cafe Americano', 'Meta Ads, Google Ads, SEO', 'ads', 'cafe-americano.webp'],
+  ['Dreamway Agro Ltd', 'Digital Marketing', 'other', 'dreamway-agro.webp'],
+  ['Dreamway Technology Ltd', 'Digital Marketing', 'other', 'dreamway-technology.webp'],
+  ["Farmer's Gold", 'Digital Marketing', 'other', 'farmers-gold.webp'],
+  ['ICON Lifestyle', 'Digital Marketing', 'other', 'icon-lifestyle.webp'],
+  ['Coffee Express', 'Digital Marketing', 'other', 'coffee-express.webp'],
+  ['Uni Metro Global', 'Digital Marketing', 'other', 'uni-metro-global.webp'],
+  ['Crestfield', 'Digital Marketing', 'other', 'crestfield.webp'],
+  ['Muhammad Iqbal Restaurant', 'Local SEO', 'local', 'muhammad-iqbal.webp'],
+  ['Raj Darbar Highway Restaurant', 'Local SEO', 'local', 'raj-darbar.webp']
+];
+function initials(name) {
+  var words = name.replace(/\.(com|bd)$/i, '').replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w && !/^(and|for|of|the)$/i.test(w); });
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+(function () {
+  var grid = document.getElementById('brand-grid');
+  var rank = function (b) { return b[2].indexOf('founder') > -1 ? 0 : (CASES[b[0]] ? 1 : 2); };
+  BRANDS = BRANDS.map(function (b, i) { return [b, i]; })
+    .sort(function (x, y) { return rank(x[0]) - rank(y[0]) || x[1] - y[1]; })
+    .map(function (x) { return x[0]; });
+  BRANDS.forEach(function (b) {
+    var li = document.createElement('li');
+    li.className = 'brand' + (b[2].indexOf('founder') > -1 ? ' founder' : '');
+    li.dataset.cat = b[2];
+    var logo = document.createElement('span');
+    logo.className = 'brand-logo';
+    logo.setAttribute('aria-hidden', 'true');
+    if (b[3]) { var img = document.createElement('img'); img.src = b[3]; img.alt = ''; logo.appendChild(img); }
+    else logo.textContent = initials(b[0]);
+    var text = document.createElement('span');
+    text.className = 'brand-text';
+    text.innerHTML = '<span class="brand-name"></span><span class="brand-role"></span>';
+    text.firstChild.textContent = b[0];
+    text.lastChild.textContent = b[1];
+    var url = CASES[b[0]];
+    if (url) {
+      var link = document.createElement('a');
+      link.className = 'brand-link';
+      link.href = url;
+      link.setAttribute('aria-label', b[0] + ' case study');
+      var tag = document.createElement('span');
+      tag.className = 'brand-case';
+      tag.textContent = 'Case study \u2192';
+      text.appendChild(tag);
+      link.appendChild(logo); link.appendChild(text);
+      li.appendChild(link);
+      li.classList.add('has-case');
+    } else {
+      li.appendChild(logo); li.appendChild(text);
+    }
+    grid.appendChild(li);
+  });
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    var f = el.dataset.count;
+    el.textContent = f === 'all' ? BRANDS.length : BRANDS.filter(function (b) { return b[2].split(' ').indexOf(f) > -1; }).length;
+  });
+  var LIMIT = 8, current = 'all', expanded = false;
+  var more = document.getElementById('brand-more');
+  function apply() {
+    var shown = 0, matched = 0;
+    grid.querySelectorAll('.brand').forEach(function (li) {
+      var match = current === 'all' || li.dataset.cat.split(' ').indexOf(current) > -1;
+      if (match) matched++;
+      li.hidden = !match || (!expanded && matched > LIMIT);
+      if (!li.hidden) shown++;
+    });
+    more.hidden = matched <= LIMIT;
+    more.textContent = expanded ? 'See less' : 'See more (' + (matched - LIMIT) + ')';
+    more.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  }
+  more.addEventListener('click', function () { expanded = !expanded; apply(); });
+  document.querySelectorAll('.filter').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      current = btn.dataset.f; expanded = false;
+      document.querySelectorAll('.filter').forEach(function (o) { o.setAttribute('aria-pressed', o === btn ? 'true' : 'false'); });
+      apply();
+    });
+  });
+  apply();
+})();
+
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.target);
+    var text = btn.dataset.target === 'phone' ? '+8801644842785' : el.textContent;
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); };
+    var select = function () {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    };
+    try { navigator.clipboard.writeText(text).then(done, select); } catch (err) { select(); }
+  });
+});
+</script>
+
+</body>
+</html>

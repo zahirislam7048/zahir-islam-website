@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fitnessmart Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: single-column case study report on the portfolio's navy + gold system; numbers first, story second. */
+:root {
+  --navy: #171642; --gold: #FCB814; --gold-deep: #D09818;
+  --bg: var(--navy); --surface: #1F1D52; --line: #2F2D5C; --fg: #FFFFFF; --muted: #A9A8C4;
+  --accent: var(--gold); --accent-ink: var(--navy); --good: #4ADE9B;
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 960px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 700; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.back { font-size: 15px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; font-family: var(--f-body); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border: 1px solid var(--line); }
+header { padding-block: 64px 48px; }
+header .wrap { display: grid; gap: 20px; }
+.client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-row img { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: block; }
+.client-row .meta { display: grid; gap: 2px; font-size: 15px; color: var(--muted); }
+.client-row .meta b { color: var(--fg); font-size: 18px; }
+h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 20px; color: var(--muted); max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 22px 20px; display: grid; gap: 4px; min-width: 0; }
+.kpi .label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi .val { font-family: var(--f-display); font-size: clamp(30px, 4vw, 42px); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .sub { font-size: 14px; color: var(--muted); }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section .wrap { display: grid; gap: 20px; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); }
+.prose { display: grid; gap: 14px; max-width: 680px; color: var(--muted); }
+.prose strong { color: var(--fg); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.steps b { display: block; font-size: 19px; }
+.steps span { color: var(--muted); font-size: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; min-width: 0; }
+.chart-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chart-head b { font-size: 19px; }
+.chart-head span { font-size: 14px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { width: 100%; min-width: 560px; height: auto; display: block; }
+.ax { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.note { font-size: 14px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: #fff; display: block; }
+figcaption { font-size: 14px; color: var(--muted); }
+blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.4; max-width: 760px; position: relative; padding-top: 34px; }
+blockquote::before { content: "\201C"; position: absolute; top: -18px; left: -2px; font-size: 80px; line-height: 1; color: var(--accent); }
+.who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.who .av { width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+.who b { display: block; }
+.who span { color: var(--muted); }
+.cta { text-align: left; }
+.cta .row { display: flex; gap: 12px; flex-wrap: wrap; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 8px 18px; }
+th, td { text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 500; }
+tfoot td { font-weight: 700; color: var(--accent); border-bottom: 0; }
+.shots summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.shot-grid { display: grid; gap: 14px; margin-top: 14px; }
+.shot-grid img { width: 100%; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; display: block; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+@media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html">Zahir <span>Islam</span></a>
+    <a class="back" href="index.html#work">&larr; All case studies</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="client-row">
+      <img src="fitness-mart.webp" alt="Fitness Mart logo" width="128" height="128">
+      <div class="meta"><b>Fitnessmart.com.bd</b><span>Gym equipment &amp; sports store · Bangladesh</span></div>
+    </div>
+    <span class="eyebrow">Case study · E-commerce SEO</span>
+    <h1><em>96,200 clicks</em> from Google in 6 months for a fitness store</h1>
+    <p class="lede">SEO put Fitnessmart.com.bd on the first page of Google for its most valuable product searches. Google Search Console shows 96,200 clicks and 1.39 million impressions in six months, about 530 free visitors a day.</p>
+    <div class="chips"><span class="chip">E-commerce SEO</span><span class="chip">Google Search Console</span><span class="chip">Link building</span><span class="chip">Semrush</span><span class="chip">Ahrefs</span></div>
+  </div>
+</header>
+
+<div class="wrap" style="padding-bottom:56px">
+  <div class="kpis">
+    <div class="kpi"><span class="label">Clicks</span><span class="val">96.2K</span><span class="sub">From Google, 6 months</span></div>
+    <div class="kpi"><span class="label">Impressions</span><span class="val">1.39M</span><span class="sub">Times shown in Google</span></div>
+    <div class="kpi"><span class="label">Avg. CTR</span><span class="val">6.9%</span><span class="sub">Clicks per impression</span></div>
+    <div class="kpi"><span class="label">Avg. position</span><span class="val">5.7</span><span class="sub">First page of results</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The client</span>
+    <h2>A fitness store competing for high-value product searches</h2>
+    <div class="prose">
+      <p>Fitnessmart.com.bd sells treadmills, dumbbells, gym equipment and indoor sports gear like carrom boards and punching bags across Bangladesh. Shoppers usually start by searching for a product and its price, so ranking for those searches is where the sales come from.</p>
+      <p>The goal was to <strong>rank category pages at the top of Google for "price in Bangladesh" searches</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What I did</span>
+    <h2>The approach</h2>
+    <ol class="steps">
+      <li><span class="n">01</span><div><b>Category pages for buying searches</b><span>Optimised category pages like treadmill, dumbbell, carrom board and boxing for "price in Bangladesh" searches.</span></div></li>
+      <li><span class="n">02</span><div><b>Link building</b><span>Built authority with links from 482 referring domains.</span></div></li>
+      <li><span class="n">03</span><div><b>Big head terms</b><span>Targeted large searches like "carrom board" (165K searches a month), where the site appears in Google's AI Overview.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Results · Google Search Console</span>
+    <h2>96,200 clicks and 1.39 million impressions in 6 months</h2>
+    <div class="prose"><p>From late September 2025 to March 2026 the site earned <strong>96,200 clicks</strong> from Google Search with an average position of <strong>5.7</strong> and a strong <strong>6.9% click-through rate</strong>. The top search, <strong>"treadmill price in bangladesh"</strong>, alone brought 11,329 clicks.</p></div>
+    <figure>
+      <img src="fitness-gsc.webp" alt="Google Search Console for fitnessmart.com.bd, last 6 months: 96.2K clicks, 1.39M impressions, 6.9% average CTR, 5.7 average position" width="1181" height="415" loading="lazy">
+      <figcaption>Screenshot from Google Search Console, Performance report, last 6 months, web search.</figcaption>
+    </figure>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Top queries</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th></tr></thead>
+        <tbody><tr><td>treadmill price in bangladesh</td><td>11,329</td><td>59,178</td><td>19.1%</td><td>4.6</td></tr><tr><td>fitness mart</td><td>4,525</td><td>9,506</td><td>47.6%</td><td>1.6</td></tr><tr><td>dumbbell price in bangladesh</td><td>3,166</td><td>19,304</td><td>16.4%</td><td>3.7</td></tr><tr><td>dumbbell price in bd</td><td>2,853</td><td>16,220</td><td>17.6%</td><td>4.0</td></tr><tr><td>treadmill</td><td>2,767</td><td>43,354</td><td>6.4%</td><td>5.2</td></tr><tr><td>carrom board price in bd</td><td>2,322</td><td>14,804</td><td>15.7%</td><td>3.2</td></tr><tr><td>gym equipment</td><td>2,206</td><td>16,984</td><td>13%</td><td>3.0</td></tr><tr><td>gym equipment price in bangladesh</td><td>1,906</td><td>8,322</td><td>22.9%</td><td>3.2</td></tr><tr><td>pull up bar price in bd</td><td>1,126</td><td>12,289</td><td>9.2%</td><td>4.5</td></tr><tr><td>punching bag price in bd</td><td>1,083</td><td>9,438</td><td>11.5%</td><td>3.8</td></tr><tr><td>football price in bd</td><td>1,009</td><td>12,966</td><td>7.8%</td><td>5.4</td></tr><tr><td>gym accessories bd</td><td>906</td><td>7,649</td><td>11.8%</td><td>3.9</td></tr><tr><td>pool table price in bangladesh</td><td>876</td><td>5,684</td><td>15.4%</td><td>3.4</td></tr><tr><td>pool board price in bangladesh</td><td>742</td><td>2,976</td><td>24.9%</td><td>3.7</td></tr><tr><td>dumbbell set price in bd</td><td>741</td><td>2,920</td><td>25.4%</td><td>3.5</td></tr><tr><td>walking pad price in bangladesh</td><td>737</td><td>4,795</td><td>15.4%</td><td>5.6</td></tr><tr><td>running machine price in bangladesh</td><td>721</td><td>4,762</td><td>15.1%</td><td>4.5</td></tr></tbody>
+      </table>
+    </div>
+    <p class="note">Top queries by clicks from Google Search Console, last 6 months.</p>
+    <details class="shots">
+      <summary>See the Search Console query screenshots (2)</summary>
+      <div class="shot-grid">
+        <img src="fitness-gsc-q1.webp" alt="Search Console top queries: treadmill price in bangladesh 11,329 clicks, fitness mart 4,525 clicks, dumbbell price in bangladesh 3,166 clicks" loading="lazy">
+        <img src="fitness-gsc-q2.webp" alt="Search Console top queries: pull up bar price in bd 1,126 clicks, punching bag price in bd 1,083 clicks, football price in bd 1,009 clicks" loading="lazy">
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Keyword rankings · Semrush</span>
+    <h2>Number 1 for the searches that sell</h2>
+    <div class="prose"><p>Fitnessmart.com.bd ranks <strong>first on Google</strong> for "treadmill price in bangladesh", "treadmill", "gym equipment price in bangladesh" and more. For "carrom board", with 165,000 searches a month, it appears in Google's AI Overview, which Semrush estimates brings 32,300 visits a month.</p></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Keyword</th><th>Position</th><th>Monthly searches</th><th>Est. traffic</th></tr></thead>
+        <tbody><tr><td>carrom board</td><td>AI Overview</td><td>165K</td><td>32.3K</td></tr><tr><td>treadmill price in bangladesh</td><td>1</td><td>5.4K</td><td>702</td></tr><tr><td>treadmill</td><td>1</td><td>3.6K</td><td>324</td></tr><tr><td>treadmill price in bd</td><td>1</td><td>720</td><td>338</td></tr><tr><td>gym equipment price in bangladesh</td><td>1</td><td>720</td><td>338</td></tr><tr><td>gym instruments price in bd</td><td>1</td><td>720</td><td>338</td></tr><tr><td>carrom board price in bangladesh</td><td>2</td><td>1K</td><td>130</td></tr><tr><td>punching bag price in bd</td><td>2</td><td>1K</td><td>130</td></tr><tr><td>dumbbells</td><td>5</td><td>2.4K</td><td>120</td></tr></tbody>
+      </table>
+    </div>
+    <p class="note">Semrush, Bangladesh, desktop, March 2026. Traffic numbers are Semrush estimates, not Google Search Console data.</p>
+    <details class="shots">
+      <summary>See the Semrush keyword screenshots (2)</summary>
+      <div class="shot-grid">
+        <img src="fitness-kw-1.webp" alt="Semrush organic positions for fitnessmart.com.bd: carrom board in AI Overview, treadmill price in bangladesh at position 1" loading="lazy">
+        <img src="fitness-kw-2.webp" alt="Semrush organic positions: treadmill price in bd, gym equipment price in bangladesh and treadmill at position 1" loading="lazy">
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Keyword rankings · Ahrefs</span>
+    <h2>489 keywords, with buyers' searches in the top 3</h2>
+    <div class="prose"><p>An Ahrefs snapshot from 12 March 2025 shows Fitnessmart.com.bd ranking for <strong>489 keywords</strong>. Of the 35 top keywords by traffic, <strong>22 rank in the top 3</strong>, and 3 are at #1: "dumbbell price in bd", "gym equipment bd" and "fitness equipment". The site even ranks for Bangla searches like <strong>"ডাম্বেল"</strong> (dumbbell) and <strong>"ট্রেডমিল"</strong> (treadmill).</p></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Keyword</th><th>Position</th><th>Monthly searches</th><th>Est. traffic</th></tr></thead>
+        <tbody><tr><td>punching bag price in bd</td><td>3</td><td>1.4K</td><td>360</td></tr><tr><td>dumbbell price in bd</td><td>1</td><td>600</td><td>323</td></tr><tr><td>treadmill price in bangladesh</td><td>10</td><td>6.5K</td><td>319</td></tr><tr><td>dumbbell price in bangladesh</td><td>2</td><td>800</td><td>217</td></tr><tr><td>skating shoe</td><td>3</td><td>1.6K</td><td>190</td></tr><tr><td>gym equipment</td><td>2</td><td>1.2K</td><td>166</td></tr><tr><td>skating shoes price in bd</td><td>8</td><td>2.6K</td><td>99</td></tr><tr><td>skating shoes</td><td>4</td><td>3.0K</td><td>96</td></tr><tr><td>football price</td><td>3</td><td>800</td><td>94</td></tr><tr><td>running machine price in bangladesh</td><td>8</td><td>1.0K</td><td>89</td></tr><tr><td>gym equipment price in bangladesh</td><td>2</td><td>300</td><td>88</td></tr><tr><td>manual treadmill price in bangladesh</td><td>3</td><td>700</td><td>78</td></tr><tr><td>hoverboard price in bangladesh</td><td>5</td><td>350</td><td>68</td></tr><tr><td>pull up bar price in bd</td><td>7</td><td>1.2K</td><td>65</td></tr><tr><td>skating shoes price</td><td>5</td><td>800</td><td>64</td></tr></tbody>
+      </table>
+    </div>
+    <p class="note">Top 15 keywords by estimated traffic from Ahrefs, 12 March 2025. Traffic numbers are Ahrefs estimates.</p>
+    <details class="shots">
+      <summary>See the Ahrefs keyword screenshots (2)</summary>
+      <div class="shot-grid">
+        <img src="fitness-ahrefs-1.webp" alt="Ahrefs organic keywords for fitnessmart.com.bd, 489 keywords, 12 March 2025, top keywords by traffic" loading="lazy">
+        <img src="fitness-ahrefs-2.webp" alt="Ahrefs organic keywords for fitnessmart.com.bd, more keywords including Bangla searches" loading="lazy">
+      </div>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Growth · Semrush</span>
+    <h2>Organic traffic up 183%</h2>
+    <div class="prose"><p>Semrush estimates <strong>37,300 organic visits a month worldwide (+183%)</strong> and <strong>36,300 from Bangladesh (+206%)</strong>, with a traffic value of $696 a month, meaning it would cost that much to buy the same traffic with ads.</p></div>
+    <figure>
+      <img src="fitness-overview.webp" alt="Semrush domain overview for fitnessmart.com.bd, March 2026: authority score 13, organic traffic 37.3K up 183%, 603 organic keywords, 482 referring domains, 2.4K backlinks" width="1506" height="567" loading="lazy">
+      <figcaption>Semrush Domain Overview, worldwide, desktop, March 2026.</figcaption>
+    </figure>
+    <figure>
+      <img src="fitness-bd.webp" alt="Semrush organic rankings for fitnessmart.com.bd in Bangladesh, March 2026: 113 keywords, 36.3K traffic up 205.74%, traffic cost $696 up 72.7%" width="1503" height="492" loading="lazy">
+      <figcaption>Semrush Organic Rankings, Bangladesh, desktop, March 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Want to rank #1 for your products?</h2>
+    <p class="prose">Message me on WhatsApp and I'll look at your site's SEO for free.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir%2C%20I%20saw%20the%20Fitnessmart%20case%20study%20and%20would%20like%20a%20free%20SEO%20audit." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn btn-ghost" href="index.html#work">See all case studies</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+</body>
+</html>

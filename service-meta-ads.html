@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meta Ads Management</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: single-column case study report on the portfolio's navy + gold system; numbers first, story second. */
+:root {
+  --navy: #171642; --gold: #FCB814; --gold-deep: #D09818;
+  --bg: var(--navy); --surface: #1F1D52; --line: #2F2D5C; --fg: #FFFFFF; --muted: #A9A8C4;
+  --accent: var(--gold); --accent-ink: var(--navy); --good: #4ADE9B;
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 960px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 700; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.back { font-size: 15px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; font-family: var(--f-body); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border: 1px solid var(--line); }
+header { padding-block: 64px 48px; }
+header .wrap { display: grid; gap: 20px; }
+.client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-row img { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: block; }
+.client-row .meta { display: grid; gap: 2px; font-size: 15px; color: var(--muted); }
+.client-row .meta b { color: var(--fg); font-size: 18px; }
+h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 20px; color: var(--muted); max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 22px 20px; display: grid; gap: 4px; min-width: 0; }
+.kpi .label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi .val { font-family: var(--f-display); font-size: clamp(30px, 4vw, 42px); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .sub { font-size: 14px; color: var(--muted); }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section .wrap { display: grid; gap: 20px; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); }
+.prose { display: grid; gap: 14px; max-width: 680px; color: var(--muted); }
+.prose strong { color: var(--fg); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.steps b { display: block; font-size: 19px; }
+.steps span { color: var(--muted); font-size: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; min-width: 0; }
+.chart-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chart-head b { font-size: 19px; }
+.chart-head span { font-size: 14px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { width: 100%; min-width: 560px; height: auto; display: block; }
+.ax { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.note { font-size: 14px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: #fff; display: block; }
+figcaption { font-size: 14px; color: var(--muted); }
+blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.4; max-width: 760px; position: relative; padding-top: 34px; }
+blockquote::before { content: "\201C"; position: absolute; top: -18px; left: -2px; font-size: 80px; line-height: 1; color: var(--accent); }
+.who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.who .av { width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+.who b { display: block; }
+.who span { color: var(--muted); }
+.cta { text-align: left; }
+.cta .row { display: flex; gap: 12px; flex-wrap: wrap; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 8px 18px; }
+th, td { text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 500; }
+tfoot td { font-weight: 700; color: var(--accent); border-bottom: 0; }
+.shots summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.shot-grid { display: grid; gap: 14px; margin-top: 14px; }
+.shot-grid img { width: 100%; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; display: block; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+@media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--muted); font-size: 16px; }
+.card .n { font-family: var(--f-mono); color: var(--accent); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.result-card { text-decoration: none; color: inherit; transition: border-color .2s, transform .15s; }
+.result-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.result-card .big { font-family: var(--f-display); font-size: 42px; font-weight: 700; color: var(--accent); line-height: 1; }
+.result-card .go { color: var(--accent); font-weight: 700; font-size: 15px; }
+.result-card .top { display: flex; align-items: center; gap: 12px; }
+.result-card .top img { width: 44px; height: 44px; border-radius: 10px; background: #fff; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+.checks li { position: relative; padding-left: 26px; color: var(--fg); font-size: 16px; }
+.checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.no li::before { content: "\2715"; color: var(--muted); }
+.timeline { display: grid; gap: 0; }
+.timeline > div { display: grid; grid-template-columns: 160px 1fr; gap: 18px; padding-block: 18px; border-top: 1px solid var(--line); }
+.timeline > div:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.timeline b { display: block; font-size: 19px; }
+.timeline span { color: var(--muted); font-size: 16px; }
+.compare td:not(:first-child), .compare th:not(:first-child) { text-align: center; }
+.compare .yes { color: var(--accent); font-weight: 700; }
+.compare .me { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.faq { display: grid; gap: 0; }
+.faq details { border-top: 1px solid var(--line); padding-block: 16px; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-size: 19px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq p { color: var(--muted); margin-top: 10px; max-width: 720px; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 8px; }
+.hero-stats div { display: grid; gap: 2px; }
+.hero-stats b { font-family: var(--f-display); font-size: 34px; color: var(--accent); line-height: 1; }
+.hero-stats span { color: var(--muted); font-size: 15px; }
+.logos { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.logos img { width: 56px; height: 56px; border-radius: 12px; background: #fff; object-fit: cover; }
+.callout { background: var(--surface); border: 1px solid var(--accent); border-radius: 18px; padding: 32px; display: grid; gap: 16px; }
+@media (max-width: 860px) { .grid3 { grid-template-columns: 1fr 1fr; } .checks { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .grid3, .grid2 { grid-template-columns: 1fr; } .timeline > div { grid-template-columns: 1fr; gap: 4px; } }
+
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html">Zahir <span>Islam</span></a>
+    <a class="back" href="index.html#services">&larr; All services</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Service · Meta Ads Management</span>
+    <h1>Facebook and Instagram ads that turn attention into <em>leads and sales.</em></h1>
+    <p class="lede">I plan, build and manage Meta Ads campaigns that reach the right people, start real conversations and bring in customers, with every result tracked.</p>
+    <div class="cta"><div class="row">
+      <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir,%20I%20would%20like%20a%20free%20Meta%20Ads%20audit." target="_blank" rel="noopener">Get a free Meta Ads audit</a>
+      <a class="btn btn-ghost" href="index.html#work">See case studies</a>
+    </div></div>
+    <div class="hero-stats"><div><b>17,458</b><span>Leads for one client</span></div><div><b>$0.21</b><span>Cost per call</span></div><div><b>1.5x→4.5x</b><span>ROAS growth</span></div></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The problem</span>
+    <h2>Stop boosting posts and hoping for results</h2>
+    <div class="grid2">
+      <div class="prose"><p>The "Boost post" button is the most expensive way to advertise on Facebook. It reaches people who like posts, not people who buy.</p><p><strong>Real results come from a system:</strong> the right objective, the right audience, creative that stops the scroll and a clear next step for the customer.</p></div>
+      <ul class="checks no" style="grid-template-columns:1fr"><li>Boosting posts instead of running campaigns</li><li>Wrong campaign objective</li><li>No pixel or conversion tracking</li><li>Same creative running for months</li><li>No follow-up for leads</li></ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">My system</span>
+    <h2>Audience → Ad → Click → Landing page → Customer</h2>
+    <div class="prose"><p>Every campaign follows the full path, so we can see exactly where money becomes customers.</p></div><ul class="checks"><li>Audience research and targeting</li><li>Offer and message planning</li><li>Creative direction and ad copy</li><li>Meta Pixel and Conversions API setup</li><li>Lead forms, Messenger and WhatsApp ads</li><li>Call ads for phone enquiries</li><li>Retargeting campaigns</li><li>Monthly report in plain language</li></ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Campaign types</span>
+    <h2>Types of Meta Ads campaigns I manage</h2>
+    <div class="grid3"><div class="card"><h3>Lead generation</h3><p>Instant lead forms that collect enquiries inside Facebook and Instagram.</p></div><div class="card"><h3>Messaging ads</h3><p>Ads that open a Messenger or WhatsApp chat with your business.</p></div><div class="card"><h3>Call ads</h3><p>A "Call now" button so customers phone you straight from the ad.</p></div><div class="card"><h3>Sales &amp; conversions</h3><p>Campaigns optimised for purchases or bookings on your website.</p></div><div class="card"><h3>Awareness &amp; reach</h3><p>Low-cost reach and video views to build your brand locally.</p></div><div class="card"><h3>Retargeting</h3><p>Ads that bring back people who visited, watched or engaged.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The process</span>
+    <h2>How I run your Meta Ads</h2>
+    <div class="timeline"><div><span class="when">Step 1</span><div><b>Strategy and research</b><span>I learn your business, customers and offer, and check what competitors are running.</span></div></div><div><span class="when">Step 2</span><div><b>Tracking and setup</b><span>Pixel, Conversions API and lead tracking are set up before any money is spent.</span></div></div><div><span class="when">Step 3</span><div><b>Creative and launch</b><span>Ads and audiences go live with a controlled test budget.</span></div></div><div><span class="when">Ongoing</span><div><b>Test, optimise, scale</b><span>I keep what converts, replace what doesn't and scale the winners.</span></div></div></div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <span class="eyebrow">Results</span>
+    <h2>Meta Ads results from real accounts</h2>
+    <div class="grid2"><a class="card result-card" href="case-dreamway-holdings.html"><div class="top"><img src="dreamway-holdings.webp" alt=""><div><b>Dreamway Holdings</b><div class="note">Real estate · Bangladesh</div></div></div><div class="big">17,458</div><p>Meta leads at $2.27 each across 105 ad sets, with 500+ converted.</p><span class="go">Read case study &rarr;</span></a><a class="card result-card" href="case-meet-greet.html"><div class="top"><img src="meet-greet.webp" alt=""><div><b>Meet and Greet BD</b><div class="note">Airport service · Dhaka</div></div></div><div class="big">4,021</div><p>Phone calls from Meta call ads at $0.21 each.</p><span class="go">Read case study &rarr;</span></a><a class="card result-card" href="case-pingus-english.html"><div class="top"><img src="pingus-english.webp" alt=""><div><b>Pingu's English Kazipara</b><div class="note">Education · Dhaka</div></div></div><div class="big">16</div><p>Completed admissions from 215 parent chats, for $86.72 in total.</p><span class="go">Read case study &rarr;</span></a><a class="card result-card" href="case-ideal-centre.html"><div class="top"><img src="ideal-centre.webp" alt=""><div><b>Ideal Centre for Tuition</b><div class="note">Education · London</div></div></div><div class="big">137</div><p>Parent enquiries from two Meta lead campaigns.</p><span class="go">Read case study &rarr;</span></a></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Creative</span>
+    <h2>Creative is a big part of the strategy</h2>
+    <div class="prose"><p>On Meta, the ad itself does most of the targeting. I plan hooks, formats and offers for each audience and keep testing new creative so results don't fade.</p></div><ul class="checks"><li>Short video and reels</li><li>Carousel and image ads</li><li>User-generated style content</li><li>Clear offers and calls to action</li></ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>Frequently asked questions</h2>
+    <div class="faq"><details><summary>How much should I spend on Meta Ads?</summary><p>It depends on your goal and market. After the audit I'll recommend a starting budget that can produce useful data without waste.</p></details><details><summary>Lead forms, messages or calls: which is best?</summary><p>It depends on how your customers like to buy. Many of my clients get the best results from messaging and call ads, because customers want to talk first.</p></details><details><summary>Do you make the ad creative?</summary><p>I plan the creative and write the copy. Design and video can be done by your team or by me, depending on the package.</p></details><details><summary>Do I pay Meta directly?</summary><p>Yes. Ad spend is billed by Meta to your own card. My management fee is separate.</p></details><details><summary>Will I own the ad account?</summary><p>Yes. The ad account, pixel and data always stay yours.</p></details></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="callout">
+      <h2>Ready to turn Facebook and Instagram into a growth channel?</h2>
+      <p class="prose">Send me a message on WhatsApp and I'll review your Meta Ads for free.</p>
+      <div class="row">
+        <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir,%20I%20would%20like%20a%20free%20Meta%20Ads%20audit." target="_blank" rel="noopener">Get a free Meta Ads audit</a>
+        <a class="btn btn-ghost" href="service-google-ads.html">Google Ads service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+</body>
+</html>

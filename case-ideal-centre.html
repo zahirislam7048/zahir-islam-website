@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ideal Centre Case Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: single-column case study report on the portfolio's navy + gold system; numbers first, story second. */
+:root {
+  --navy: #171642; --gold: #FCB814; --gold-deep: #D09818;
+  --bg: var(--navy); --surface: #1F1D52; --line: #2F2D5C; --fg: #FFFFFF; --muted: #A9A8C4;
+  --accent: var(--gold); --accent-ink: var(--navy); --good: #4ADE9B;
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 960px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 700; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.back { font-size: 15px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; font-family: var(--f-body); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border: 1px solid var(--line); }
+header { padding-block: 64px 48px; }
+header .wrap { display: grid; gap: 20px; }
+.client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-row img { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: block; }
+.client-row .meta { display: grid; gap: 2px; font-size: 15px; color: var(--muted); }
+.client-row .meta b { color: var(--fg); font-size: 18px; }
+h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 20px; color: var(--muted); max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 22px 20px; display: grid; gap: 4px; min-width: 0; }
+.kpi .label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi .val { font-family: var(--f-display); font-size: clamp(30px, 4vw, 42px); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .sub { font-size: 14px; color: var(--muted); }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section .wrap { display: grid; gap: 20px; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); }
+.prose { display: grid; gap: 14px; max-width: 680px; color: var(--muted); }
+.prose strong { color: var(--fg); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.steps b { display: block; font-size: 19px; }
+.steps span { color: var(--muted); font-size: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; min-width: 0; }
+.chart-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chart-head b { font-size: 19px; }
+.chart-head span { font-size: 14px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { width: 100%; min-width: 560px; height: auto; display: block; }
+.ax { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.note { font-size: 14px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: #fff; display: block; }
+figcaption { font-size: 14px; color: var(--muted); }
+blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.4; max-width: 760px; position: relative; padding-top: 34px; }
+blockquote::before { content: "\201C"; position: absolute; top: -18px; left: -2px; font-size: 80px; line-height: 1; color: var(--accent); }
+.who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.who .av { width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+.who b { display: block; }
+.who span { color: var(--muted); }
+.cta { text-align: left; }
+.cta .row { display: flex; gap: 12px; flex-wrap: wrap; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+@media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html">Zahir <span>Islam</span></a>
+    <a class="back" href="index.html#work">&larr; All case studies</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="client-row">
+      <img src="ideal-centre.webp" alt="Ideal Centre for Tuition logo" width="128" height="128">
+      <div class="meta"><b>Ideal Centre for Tuition</b><span>Maths, English &amp; Science tuition · London, UK</span></div>
+    </div>
+    <span class="eyebrow">Case study · Meta Ads, Google Ads + SEO</span>
+    <h1><em>62 parent enquiries</em> in 5 weeks for a London tuition centre</h1>
+    <p class="lede">A Meta lead campaign that brought a steady flow of enquiries from parents during the back-to-school season, at £5.42 per lead.</p>
+    <div class="chips"><span class="chip">Meta Ads</span><span class="chip">Lead forms</span><span class="chip">Google Ads</span><span class="chip">Google Business Profile</span><span class="chip">SEO</span><span class="chip">Education</span></div>
+  </div>
+</header>
+
+<div class="wrap" style="padding-bottom:56px">
+  <div class="kpis">
+    <div class="kpi"><span class="label">Meta leads</span><span class="val">62</span><span class="sub">Parent enquiries</span></div>
+    <div class="kpi"><span class="label">Cost per lead</span><span class="val">£5.42</span><span class="sub">Average</span></div>
+    <div class="kpi"><span class="label">Ad spend</span><span class="val">£335.99</span><span class="sub">Total</span></div>
+    <div class="kpi"><span class="label">Duration</span><span class="val">35 days</span><span class="sub">12 Aug – 15 Sep 2026</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The client</span>
+    <h2>A local tuition centre that needed parents to find them</h2>
+    <div class="prose">
+      <p>Ideal Centre for Tuition teaches Maths, English and Science to school students in London. Parents choose a tutor carefully, so the centre needed to reach families nearby and give them an easy way to ask questions before enrolling.</p>
+      <p>The goal for this campaign was simple: <strong>get more enquiries from local parents</strong> ahead of the new school term.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What I did</span>
+    <h2>The approach</h2>
+    <ol class="steps">
+      <li><span class="n">01</span><div><b>Timed it for back-to-school</b><span>Launched in mid-August, when parents start planning tuition for the new term.</span></div></li>
+      <li><span class="n">02</span><div><b>Used Meta lead forms</b><span>Parents could send an enquiry inside Facebook and Instagram without leaving the app.</span></div></li>
+      <li><span class="n">03</span><div><b>Targeted local families</b><span>Ads reached parents within travelling distance of the centre.</span></div></li>
+      <li><span class="n">04</span><div><b>Monitored and adjusted</b><span>Checked results daily and edited the campaign when lead flow dipped.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Campaign 1 · Meta lead ads</span>
+    <h2>Leads came in steadily across the campaign</h2>
+    <div class="chart-card">
+      <div class="chart-head"><b>Daily Meta leads</b><span class="mono">12 Aug – 15 Sep 2026 · 62 total</span></div>
+      <div class="chart-scroll"><svg viewBox="0 0 720 240" role="img" aria-label="Daily Meta leads from 12 Aug to 15 Sep 2026, 62 in total, peaking at 5 a day"><line x1="34" y1="206.0" x2="710" y2="206.0" stroke="var(--line)" stroke-width="1"/><text x="26" y="210.0" text-anchor="end" class="ax">0</text><line x1="34" y1="167.6" x2="710" y2="167.6" stroke="var(--line)" stroke-width="1"/><text x="26" y="171.6" text-anchor="end" class="ax">1</text><line x1="34" y1="129.2" x2="710" y2="129.2" stroke="var(--line)" stroke-width="1"/><text x="26" y="133.2" text-anchor="end" class="ax">2</text><line x1="34" y1="90.8" x2="710" y2="90.8" stroke="var(--line)" stroke-width="1"/><text x="26" y="94.8" text-anchor="end" class="ax">3</text><line x1="34" y1="52.4" x2="710" y2="52.4" stroke="var(--line)" stroke-width="1"/><text x="26" y="56.4" text-anchor="end" class="ax">4</text><line x1="34" y1="14.0" x2="710" y2="14.0" stroke="var(--line)" stroke-width="1"/><text x="26" y="18.0" text-anchor="end" class="ax">5</text><rect x="37.5" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>12 Aug: 1 lead</title></rect><text x="43.7" y="228" text-anchor="middle" class="ax">12 Aug</text><rect x="56.8" y="90.8" width="12.4" height="115.2" rx="2" fill="var(--accent)"><title>13 Aug: 3 leads</title></rect><rect x="76.1" y="14.0" width="12.4" height="192.0" rx="2" fill="var(--accent)"><title>14 Aug: 5 leads</title></rect><rect x="95.4" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>15 Aug: 1 lead</title></rect><rect x="114.7" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>16 Aug: 0 leads</title></rect><rect x="134.0" y="52.4" width="12.4" height="153.6" rx="2" fill="var(--accent)"><title>17 Aug: 4 leads</title></rect><rect x="153.4" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>18 Aug: 0 leads</title></rect><rect x="172.7" y="129.2" width="12.4" height="76.8" rx="2" fill="var(--accent)"><title>19 Aug: 2 leads</title></rect><text x="178.9" y="228" text-anchor="middle" class="ax">19 Aug</text><rect x="192.0" y="52.4" width="12.4" height="153.6" rx="2" fill="var(--accent)"><title>20 Aug: 4 leads</title></rect><rect x="211.3" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>21 Aug: 0 leads</title></rect><rect x="230.6" y="129.2" width="12.4" height="76.8" rx="2" fill="var(--accent)"><title>22 Aug: 2 leads</title></rect><rect x="249.9" y="14.0" width="12.4" height="192.0" rx="2" fill="var(--accent)"><title>23 Aug: 5 leads</title></rect><rect x="269.2" y="90.8" width="12.4" height="115.2" rx="2" fill="var(--accent)"><title>24 Aug: 3 leads</title></rect><rect x="288.6" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>25 Aug: 1 lead</title></rect><rect x="307.9" y="52.4" width="12.4" height="153.6" rx="2" fill="var(--accent)"><title>26 Aug: 4 leads</title></rect><text x="314.1" y="228" text-anchor="middle" class="ax">26 Aug</text><rect x="327.2" y="129.2" width="12.4" height="76.8" rx="2" fill="var(--accent)"><title>27 Aug: 2 leads</title></rect><rect x="346.5" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>28 Aug: 0 leads</title></rect><rect x="365.8" y="52.4" width="12.4" height="153.6" rx="2" fill="var(--accent)"><title>29 Aug: 4 leads</title></rect><rect x="385.1" y="129.2" width="12.4" height="76.8" rx="2" fill="var(--accent)"><title>30 Aug: 2 leads</title></rect><rect x="404.4" y="14.0" width="12.4" height="192.0" rx="2" fill="var(--accent)"><title>31 Aug: 5 leads</title></rect><rect x="423.8" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>01 Sep: 0 leads</title></rect><rect x="443.1" y="129.2" width="12.4" height="76.8" rx="2" fill="var(--accent)"><title>02 Sep: 2 leads</title></rect><text x="449.3" y="228" text-anchor="middle" class="ax">2 Sep</text><rect x="462.4" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>03 Sep: 0 leads</title></rect><rect x="481.7" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>04 Sep: 0 leads</title></rect><rect x="501.0" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>05 Sep: 0 leads</title></rect><rect x="520.3" y="129.2" width="12.4" height="76.8" rx="2" fill="var(--accent)"><title>06 Sep: 2 leads</title></rect><rect x="539.6" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>07 Sep: 1 lead</title></rect><rect x="559.0" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>08 Sep: 1 lead</title></rect><rect x="578.3" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>09 Sep: 1 lead</title></rect><text x="584.5" y="228" text-anchor="middle" class="ax">9 Sep</text><rect x="597.6" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>10 Sep: 0 leads</title></rect><rect x="616.9" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>11 Sep: 1 lead</title></rect><rect x="636.2" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>12 Sep: 1 lead</title></rect><rect x="655.5" y="52.4" width="12.4" height="153.6" rx="2" fill="var(--accent)"><title>13 Sep: 4 leads</title></rect><rect x="674.8" y="167.6" width="12.4" height="38.4" rx="2" fill="var(--accent)"><title>14 Sep: 1 lead</title></rect><rect x="694.2" y="206.0" width="12.4" height="0.0" rx="2" fill="var(--accent)"><title>15 Sep: 0 leads</title></rect><text x="700.3" y="228" text-anchor="end" class="ax">15 Sep</text></svg></div>
+      <p class="note">Daily figures read from the Meta Ads Manager chart below. Peak days brought 5 leads each.</p>
+    </div>
+    <figure>
+      <img src="ideal-centre-meta-results.webp" alt="Meta Ads Manager performance overview showing 62 Meta leads, £5.42 per lead and £335.99 spent" width="961" height="493" loading="lazy">
+      <figcaption>Screenshot from Meta Ads Manager, campaign performance overview.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Campaign 2 · Lead form ads</span>
+    <h2>75 more enquiries from a second lead form campaign</h2>
+    <div class="kpis">
+      <div class="kpi"><span class="label">Form leads</span><span class="val">75</span><span class="sub">Parent enquiries</span></div>
+      <div class="kpi"><span class="label">Cost per lead</span><span class="val">£9.72</span><span class="sub">Average</span></div>
+      <div class="kpi"><span class="label">Ad spend</span><span class="val">£728.98</span><span class="sub">Total</span></div>
+      <div class="kpi"><span class="label">Duration</span><span class="val">50 days</span><span class="sub">28 Jul – 15 Sep 2026</span></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-head"><b>Daily form leads</b><span class="mono">28 Jul – 15 Sep 2026 · 75 total</span></div>
+      <div class="chart-scroll"><svg viewBox="0 0 720 240" role="img" aria-label="Daily form leads from 28 Jul to 15 Sep 2026, 75 in total, peaking at 5 a day"><line x1="34" y1="206.0" x2="710" y2="206.0" stroke="var(--line)" stroke-width="1"/><text x="26" y="210.0" text-anchor="end" class="ax">0</text><line x1="34" y1="167.6" x2="710" y2="167.6" stroke="var(--line)" stroke-width="1"/><text x="26" y="171.6" text-anchor="end" class="ax">1</text><line x1="34" y1="129.2" x2="710" y2="129.2" stroke="var(--line)" stroke-width="1"/><text x="26" y="133.2" text-anchor="end" class="ax">2</text><line x1="34" y1="90.8" x2="710" y2="90.8" stroke="var(--line)" stroke-width="1"/><text x="26" y="94.8" text-anchor="end" class="ax">3</text><line x1="34" y1="52.4" x2="710" y2="52.4" stroke="var(--line)" stroke-width="1"/><text x="26" y="56.4" text-anchor="end" class="ax">4</text><line x1="34" y1="14.0" x2="710" y2="14.0" stroke="var(--line)" stroke-width="1"/><text x="26" y="18.0" text-anchor="end" class="ax">5</text><rect x="36.4" y="52.4" width="8.7" height="153.6" rx="2" fill="var(--accent)"><title>28 Jul: 4 leads</title></rect><text x="40.8" y="228" text-anchor="middle" class="ax">28 Jul</text><rect x="50.0" y="14.0" width="8.7" height="192.0" rx="2" fill="var(--accent)"><title>29 Jul: 5 leads</title></rect><rect x="63.5" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>30 Jul: 1 lead</title></rect><rect x="77.0" y="90.8" width="8.7" height="115.2" rx="2" fill="var(--accent)"><title>31 Jul: 3 leads</title></rect><rect x="90.5" y="52.4" width="8.7" height="153.6" rx="2" fill="var(--accent)"><title>01 Aug: 4 leads</title></rect><rect x="104.0" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>02 Aug: 0 leads</title></rect><rect x="117.6" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>03 Aug: 2 leads</title></rect><rect x="131.1" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>04 Aug: 1 lead</title></rect><text x="135.4" y="228" text-anchor="middle" class="ax">4 Aug</text><rect x="144.6" y="90.8" width="8.7" height="115.2" rx="2" fill="var(--accent)"><title>05 Aug: 3 leads</title></rect><rect x="158.1" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>06 Aug: 1 lead</title></rect><rect x="171.6" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>07 Aug: 2 leads</title></rect><rect x="185.2" y="52.4" width="8.7" height="153.6" rx="2" fill="var(--accent)"><title>08 Aug: 4 leads</title></rect><rect x="198.7" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>09 Aug: 1 lead</title></rect><rect x="212.2" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>10 Aug: 0 leads</title></rect><rect x="225.7" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>11 Aug: 2 leads</title></rect><text x="230.0" y="228" text-anchor="middle" class="ax">11 Aug</text><rect x="239.2" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>12 Aug: 2 leads</title></rect><rect x="252.8" y="14.0" width="8.7" height="192.0" rx="2" fill="var(--accent)"><title>13 Aug: 5 leads</title></rect><rect x="266.3" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>14 Aug: 0 leads</title></rect><rect x="279.8" y="90.8" width="8.7" height="115.2" rx="2" fill="var(--accent)"><title>15 Aug: 3 leads</title></rect><rect x="293.3" y="90.8" width="8.7" height="115.2" rx="2" fill="var(--accent)"><title>16 Aug: 3 leads</title></rect><rect x="306.8" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>17 Aug: 1 lead</title></rect><rect x="320.4" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>18 Aug: 0 leads</title></rect><text x="324.7" y="228" text-anchor="middle" class="ax">18 Aug</text><rect x="333.9" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>19 Aug: 2 leads</title></rect><rect x="347.4" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>20 Aug: 1 lead</title></rect><rect x="360.9" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>21 Aug: 2 leads</title></rect><rect x="374.4" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>22 Aug: 2 leads</title></rect><rect x="388.0" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>23 Aug: 0 leads</title></rect><rect x="401.5" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>24 Aug: 1 lead</title></rect><rect x="415.0" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>25 Aug: 0 leads</title></rect><text x="419.3" y="228" text-anchor="middle" class="ax">25 Aug</text><rect x="428.5" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>26 Aug: 0 leads</title></rect><rect x="442.0" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>27 Aug: 2 leads</title></rect><rect x="455.6" y="52.4" width="8.7" height="153.6" rx="2" fill="var(--accent)"><title>28 Aug: 4 leads</title></rect><rect x="469.1" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>29 Aug: 1 lead</title></rect><rect x="482.6" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>30 Aug: 1 lead</title></rect><rect x="496.1" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>31 Aug: 1 lead</title></rect><rect x="509.6" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>01 Sep: 2 leads</title></rect><text x="514.0" y="228" text-anchor="middle" class="ax">1 Sep</text><rect x="523.2" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>02 Sep: 1 lead</title></rect><rect x="536.7" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>03 Sep: 2 leads</title></rect><rect x="550.2" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>04 Sep: 1 lead</title></rect><rect x="563.7" y="167.6" width="8.7" height="38.4" rx="2" fill="var(--accent)"><title>05 Sep: 1 lead</title></rect><rect x="577.2" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>06 Sep: 2 leads</title></rect><rect x="590.8" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>07 Sep: 0 leads</title></rect><rect x="604.3" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>08 Sep: 0 leads</title></rect><text x="608.6" y="228" text-anchor="middle" class="ax">8 Sep</text><rect x="617.8" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>09 Sep: 0 leads</title></rect><rect x="631.3" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>10 Sep: 0 leads</title></rect><rect x="644.8" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>11 Sep: 0 leads</title></rect><rect x="658.4" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>12 Sep: 0 leads</title></rect><rect x="671.9" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>13 Sep: 0 leads</title></rect><rect x="685.4" y="129.2" width="8.7" height="76.8" rx="2" fill="var(--accent)"><title>14 Sep: 2 leads</title></rect><rect x="698.9" y="206.0" width="8.7" height="0.0" rx="2" fill="var(--accent)"><title>15 Sep: 0 leads</title></rect><text x="703.2" y="228" text-anchor="end" class="ax">15 Sep</text></svg></div>
+      <p class="note">Daily figures read from the Meta Ads Manager chart below. Peak days brought 5 leads each.</p>
+    </div>
+    <figure>
+      <img src="ideal-centre-lead-form-results.webp" alt="Meta Ads Manager performance overview showing 75 form leads, £9.72 per lead and £728.98 spent" width="961" height="494" loading="lazy">
+      <figcaption>Screenshot from Meta Ads Manager, lead form campaign performance overview.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Google Business Profile · Local SEO</span>
+    <h2>145 phone calls straight from Google</h2>
+    <div class="prose"><p>Alongside the ads, I optimised the centre's Google Business Profile so parents searching for tuition nearby could find it and call directly from Google Search and Maps.</p></div>
+    <div class="kpis">
+      <div class="kpi"><span class="label">Calls</span><span class="val">145</span><span class="sub">From the Business Profile</span></div>
+      <div class="kpi"><span class="label">Best month</span><span class="val">~48</span><span class="sub">September 2026</span></div>
+      <div class="kpi"><span class="label">Monthly average</span><span class="val">~24</span><span class="sub">May – Oct 2026</span></div>
+      <div class="kpi"><span class="label">Duration</span><span class="val">6 months</span><span class="sub">May – Oct 2026</span></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-head"><b>Monthly calls from Google</b><span class="mono">May – Oct 2026 · 145 total</span></div>
+      <div class="chart-scroll"><svg viewBox="0 0 720 260" role="img" aria-label="Monthly calls from the Google Business Profile, May to October 2026, 145 in total, peaking at about 48 in September"><line x1="34" y1="226.0" x2="710" y2="226.0" stroke="var(--line)" stroke-width="1"/><text x="26" y="230.0" text-anchor="end" class="ax">0</text><line x1="34" y1="185.6" x2="710" y2="185.6" stroke="var(--line)" stroke-width="1"/><text x="26" y="189.6" text-anchor="end" class="ax">10</text><line x1="34" y1="145.2" x2="710" y2="145.2" stroke="var(--line)" stroke-width="1"/><text x="26" y="149.2" text-anchor="end" class="ax">20</text><line x1="34" y1="104.8" x2="710" y2="104.8" stroke="var(--line)" stroke-width="1"/><text x="26" y="108.8" text-anchor="end" class="ax">30</text><line x1="34" y1="64.4" x2="710" y2="64.4" stroke="var(--line)" stroke-width="1"/><text x="26" y="68.4" text-anchor="end" class="ax">40</text><line x1="34" y1="24.0" x2="710" y2="24.0" stroke="var(--line)" stroke-width="1"/><text x="26" y="28.0" text-anchor="end" class="ax">50</text><rect x="58.8" y="165.4" width="63.1" height="60.6" rx="3" fill="var(--accent)"><title>May 2026: about 15 calls</title></rect><text x="90.3" y="159.4" text-anchor="middle" class="ax" style="fill:var(--fg)">15</text><text x="90.3" y="248" text-anchor="middle" class="ax">May</text><rect x="171.5" y="157.3" width="63.1" height="68.7" rx="3" fill="var(--accent)"><title>Jun 2026: about 17 calls</title></rect><text x="203.0" y="151.3" text-anchor="middle" class="ax" style="fill:var(--fg)">17</text><text x="203.0" y="248" text-anchor="middle" class="ax">Jun</text><rect x="284.1" y="112.9" width="63.1" height="113.1" rx="3" fill="var(--accent)"><title>Jul 2026: about 28 calls</title></rect><text x="315.7" y="106.9" text-anchor="middle" class="ax" style="fill:var(--fg)">28</text><text x="315.7" y="248" text-anchor="middle" class="ax">Jul</text><rect x="396.8" y="133.1" width="63.1" height="92.9" rx="3" fill="var(--accent)"><title>Aug 2026: about 23 calls</title></rect><text x="428.3" y="127.1" text-anchor="middle" class="ax" style="fill:var(--fg)">23</text><text x="428.3" y="248" text-anchor="middle" class="ax">Aug</text><rect x="509.5" y="32.1" width="63.1" height="193.9" rx="3" fill="var(--accent)"><title>Sep 2026: about 48 calls</title></rect><text x="541.0" y="26.1" text-anchor="middle" class="ax" style="fill:var(--fg)">48</text><text x="541.0" y="248" text-anchor="middle" class="ax">Sep</text><rect x="622.1" y="169.4" width="63.1" height="56.6" rx="3" fill="var(--accent)"><title>Oct 2026: about 14 calls</title></rect><text x="653.7" y="163.4" text-anchor="middle" class="ax" style="fill:var(--fg)">14</text><text x="653.7" y="248" text-anchor="middle" class="ax">Oct *</text></svg></div>
+      <p class="note">Monthly figures read from the Google Business Profile chart below, so each is approximate. * October is a partial month.</p>
+    </div>
+    <figure>
+      <img src="ideal-centre-gbp-calls.webp" alt="Google Business Profile performance showing 145 calls made from the Business Profile between May and October 2026" width="1152" height="586" loading="lazy">
+      <figcaption>Screenshot from Google Business Profile, Performance › Calls.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Google Ads · Search</span>
+    <h2>93 conversions in 23 days at £3.86 each</h2>
+    <div class="prose"><p>Google Search ads put the centre in front of parents actively searching for tuition. <strong>About 1 in 5 clicks (21%) turned into a conversion</strong>, and the centre's impression share in its auctions grew from 0% to 15% month over month.</p></div>
+    <div class="kpis">
+      <div class="kpi"><span class="label">Conversions</span><span class="val">93</span><span class="sub">21% of clicks</span></div>
+      <div class="kpi"><span class="label">Cost / conversion</span><span class="val">£3.86</span><span class="sub">£359 total spend</span></div>
+      <div class="kpi"><span class="label">Clicks</span><span class="val">438</span><span class="sub">£0.82 per click</span></div>
+      <div class="kpi"><span class="label">Impressions</span><span class="val">142K</span><span class="sub">20 Sep – 12 Oct 2026</span></div>
+    </div>
+    <figure>
+      <img src="ideal-centre-google-ads.webp" alt="Google Ads overview showing 142K impressions, 438 clicks, £359 cost and 93 conversions from 20 Sep to 12 Oct 2026" width="992" height="336" loading="lazy">
+      <figcaption>Screenshot from Google Ads, all campaigns, 20 Sep – 12 Oct 2026. Cost per conversion, conversion rate and cost per click are calculated from these totals.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">SEO · Google Search Console</span>
+    <h2>736 free clicks from Google in 3 months</h2>
+    <div class="prose"><p>Alongside the ads, SEO work on the centre's website brought <strong>736 clicks and 40,000 impressions</strong> from Google Search between July and October 2026, about 8 free visitors a day with busy days near 18.</p></div>
+    <div class="kpis">
+      <div class="kpi"><span class="label">Clicks</span><span class="val">736</span><span class="sub">From Google Search</span></div>
+      <div class="kpi"><span class="label">Impressions</span><span class="val">40K</span><span class="sub">Times shown in Google</span></div>
+      <div class="kpi"><span class="label">Avg. CTR</span><span class="val">1.8%</span><span class="sub">Clicks per impression</span></div>
+      <div class="kpi"><span class="label">Duration</span><span class="val">3 months</span><span class="sub">Jul – Oct 2026</span></div>
+    </div>
+    <figure>
+      <img src="ideal-centre-gsc.webp" alt="Google Search Console performance for idealcentre over the last 3 months: 736 clicks, 40K impressions, 1.8% average CTR, 33.9 average position" width="1490" height="484" loading="lazy">
+      <figcaption>Screenshot from Google Search Console, Performance report, last 3 months, web search. The shaded bands and dashed lines are annotations from a Search Console browser extension. Clicks per day is calculated from the total.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Client feedback</span>
+    <blockquote>Zahir understood that parents need trust before they enroll. His campaigns brought us real student inquiries, and our website now shows up when parents search for tuition.</blockquote>
+    <div class="who"><span class="av">JH</span><div><b>Jummer Hossain</b><span>Owner, Ideal Centre for Tuition</span></div></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Want enquiries like this for your business?</h2>
+    <p class="prose">Message me on WhatsApp and I'll look at your current ads for free.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir%2C%20I%20saw%20the%20Ideal%20Centre%20case%20study%20and%20would%20like%20a%20free%20audit." target="_blank" rel="noopener">Message on WhatsApp</a>
+      <a class="btn btn-ghost" href="index.html#work">See all case studies</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+</body>
+</html>

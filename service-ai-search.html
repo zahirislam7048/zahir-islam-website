@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Search Optimization</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: single-column case study report on the portfolio's navy + gold system; numbers first, story second. */
+:root {
+  --navy: #171642; --gold: #FCB814; --gold-deep: #D09818;
+  --bg: var(--navy); --surface: #1F1D52; --line: #2F2D5C; --fg: #FFFFFF; --muted: #A9A8C4;
+  --accent: var(--gold); --accent-ink: var(--navy); --good: #4ADE9B;
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 960px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 700; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.back { font-size: 15px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; font-family: var(--f-body); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border: 1px solid var(--line); }
+header { padding-block: 64px 48px; }
+header .wrap { display: grid; gap: 20px; }
+.client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-row img { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: block; }
+.client-row .meta { display: grid; gap: 2px; font-size: 15px; color: var(--muted); }
+.client-row .meta b { color: var(--fg); font-size: 18px; }
+h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 20px; color: var(--muted); max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 22px 20px; display: grid; gap: 4px; min-width: 0; }
+.kpi .label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi .val { font-family: var(--f-display); font-size: clamp(30px, 4vw, 42px); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .sub { font-size: 14px; color: var(--muted); }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section .wrap { display: grid; gap: 20px; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); }
+.prose { display: grid; gap: 14px; max-width: 680px; color: var(--muted); }
+.prose strong { color: var(--fg); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.steps b { display: block; font-size: 19px; }
+.steps span { color: var(--muted); font-size: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; min-width: 0; }
+.chart-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chart-head b { font-size: 19px; }
+.chart-head span { font-size: 14px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { width: 100%; min-width: 560px; height: auto; display: block; }
+.ax { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.note { font-size: 14px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: #fff; display: block; }
+figcaption { font-size: 14px; color: var(--muted); }
+blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.4; max-width: 760px; position: relative; padding-top: 34px; }
+blockquote::before { content: "\201C"; position: absolute; top: -18px; left: -2px; font-size: 80px; line-height: 1; color: var(--accent); }
+.who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.who .av { width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+.who b { display: block; }
+.who span { color: var(--muted); }
+.cta { text-align: left; }
+.cta .row { display: flex; gap: 12px; flex-wrap: wrap; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 8px 18px; }
+th, td { text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 500; }
+tfoot td { font-weight: 700; color: var(--accent); border-bottom: 0; }
+.shots summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.shot-grid { display: grid; gap: 14px; margin-top: 14px; }
+.shot-grid img { width: 100%; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; display: block; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+@media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--muted); font-size: 16px; }
+.card .n { font-family: var(--f-mono); color: var(--accent); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.result-card { text-decoration: none; color: inherit; transition: border-color .2s, transform .15s; }
+.result-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.result-card .big { font-family: var(--f-display); font-size: 42px; font-weight: 700; color: var(--accent); line-height: 1; }
+.result-card .go { color: var(--accent); font-weight: 700; font-size: 15px; }
+.result-card .top { display: flex; align-items: center; gap: 12px; }
+.result-card .top img { width: 44px; height: 44px; border-radius: 10px; background: #fff; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+.checks li { position: relative; padding-left: 26px; color: var(--fg); font-size: 16px; }
+.checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.no li::before { content: "\2715"; color: var(--muted); }
+.timeline { display: grid; gap: 0; }
+.timeline > div { display: grid; grid-template-columns: 160px 1fr; gap: 18px; padding-block: 18px; border-top: 1px solid var(--line); }
+.timeline > div:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.timeline b { display: block; font-size: 19px; }
+.timeline span { color: var(--muted); font-size: 16px; }
+.compare td:not(:first-child), .compare th:not(:first-child) { text-align: center; }
+.compare .yes { color: var(--accent); font-weight: 700; }
+.compare .me { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.faq { display: grid; gap: 0; }
+.faq details { border-top: 1px solid var(--line); padding-block: 16px; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-size: 19px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq p { color: var(--muted); margin-top: 10px; max-width: 720px; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 8px; }
+.hero-stats div { display: grid; gap: 2px; }
+.hero-stats b { font-family: var(--f-display); font-size: 34px; color: var(--accent); line-height: 1; }
+.hero-stats span { color: var(--muted); font-size: 15px; }
+.logos { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.logos img { width: 56px; height: 56px; border-radius: 12px; background: #fff; object-fit: cover; }
+.callout { background: var(--surface); border: 1px solid var(--accent); border-radius: 18px; padding: 32px; display: grid; gap: 16px; }
+@media (max-width: 860px) { .grid3 { grid-template-columns: 1fr 1fr; } .checks { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .grid3, .grid2 { grid-template-columns: 1fr; } .timeline > div { grid-template-columns: 1fr; gap: 4px; } }
+
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html">Zahir <span>Islam</span></a>
+    <a class="back" href="index.html#services">&larr; All services</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Service · AI Search Optimization (LLM SEO)</span>
+    <h1>When customers ask AI who to hire, <em>will it mention you?</em></h1>
+    <p class="lede">More and more people ask ChatGPT, Google's AI Overviews, AI Mode and Gemini for recommendations instead of scrolling through search results. I help your business become a source these AI tools find, trust and cite.</p>
+    <div class="cta"><div class="row">
+      <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir,%20I%20would%20like%20a%20free%20AI%20search%20visibility%20check." target="_blank" rel="noopener">Get a free AI visibility check</a>
+      <a class="btn btn-ghost" href="#proof">See an example</a>
+    </div></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What is AI search optimization?</span>
+    <h2>SEO for the answers, not just the links</h2>
+    <div class="prose">
+      <p>Traditional SEO gets your website into Google's list of links. <strong>AI search optimization (also called LLM SEO or GEO) gets your business into the answer itself</strong>, when someone asks an AI tool a question like "best tuition centre near me" or "where to buy a treadmill in Dhaka".</p>
+      <p>AI tools build their answers from websites, reviews, business profiles and other sources they trust. The work is making sure your business is clearly described, well reviewed and consistently mentioned in those places.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">How it fits</span>
+    <h2>AI search doesn't replace SEO. It builds on it.</h2>
+    <div class="grid2">
+      <div class="card"><h3>Traditional SEO</h3><p>Ranks your pages in Google's results so people click through to your site.</p></div>
+      <div class="card"><h3>AI search optimization</h3><p>Makes your business the one AI tools name, quote and link to when they answer a question.</p></div>
+    </div>
+    <p class="note">A strong SEO foundation is what AI tools read first, so the two work best together.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What I do</span>
+    <h2>My AI search services</h2>
+    <div class="grid3">
+      <div class="card"><h3>AI visibility audit</h3><p>I check what ChatGPT, Gemini and Google's AI features say about your business and your competitors today.</p></div>
+      <div class="card"><h3>Prompt research</h3><p>I find the questions your customers actually ask AI tools before they buy.</p></div>
+      <div class="card"><h3>Answer-ready content</h3><p>Clear service pages, FAQs and guides written so AI tools can understand and quote them.</p></div>
+      <div class="card"><h3>Entity &amp; knowledge signals</h3><p>Consistent business details, structured data (schema) and profiles that tell AI exactly who you are.</p></div>
+      <div class="card"><h3>Reviews &amp; mentions</h3><p>More reviews and mentions on the sites AI tools rely on for recommendations.</p></div>
+      <div class="card"><h3>Tracking &amp; reporting</h3><p>Monthly checks of how often you're mentioned and cited across AI tools.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The process</span>
+    <h2>How AI search optimization works</h2>
+    <div class="timeline">
+      <div><span class="when">Discover</span><div><b>Find out where you stand</b><span>Test the questions your customers ask and record which businesses AI tools recommend.</span></div></div>
+      <div><span class="when">Understand</span><div><b>See why competitors win</b><span>Find the sources and pages AI tools are using to build their answers.</span></div></div>
+      <div><span class="when">Build</span><div><b>Strengthen your signals</b><span>Improve your website content, schema, Google profile, reviews and mentions.</span></div></div>
+      <div><span class="when">Measure</span><div><b>Track and improve</b><span>Re-test every month and keep improving what moves your visibility.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="wrap">
+    <span class="eyebrow">Example</span>
+    <h2>Already showing up in AI search</h2>
+    <div class="grid2">
+      <a class="card result-card" href="case-fitnessmart.html"><div class="top"><img src="fitness-mart.webp" alt=""><div><b>Fitnessmart.com.bd</b><div class="note">E-commerce · Bangladesh</div></div></div><div class="big">214</div><p>Pages cited by AI tools according to Semrush (206 by ChatGPT, 10 in Google AI Mode, 2 by Gemini), built on the SEO work behind 96,200 Google clicks.</p><span class="go">Read case study &rarr;</span></a>
+      <a class="card result-card" href="case-fitnessmart.html"><div class="top"><img src="fitness-mart.webp" alt=""><div><b>Fitnessmart.com.bd</b><div class="note">"carrom board" · 165K searches a month</div></div></div><div class="big">AI Overview</div><p>The store appears in Google's AI Overview for "carrom board", a search with 165,000 monthly searches.</p><span class="go">Read case study &rarr;</span></a>
+    </div>
+    <p class="note">Source: Semrush, March 2026.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What I track</span>
+    <h2>The AI search numbers I report on</h2>
+    <ul class="checks">
+      <li>Brand mentions in AI answers</li>
+      <li>Pages cited as sources</li>
+      <li>Share of voice vs competitors</li>
+      <li>Appearances in Google AI Overviews</li>
+      <li>Traffic from AI tools to your website</li>
+      <li>Leads that came from AI referrals</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Who it's for</span>
+    <h2>Built for high-consideration decisions</h2>
+    <div class="prose"><p>AI search matters most when customers research before they buy: schools and tuition, property, healthcare, professional services, travel and higher-value e-commerce.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions about AI search optimization</h2>
+    <div class="faq">
+      <details><summary>What is LLM SEO?</summary><p>LLM SEO means optimising your business so large language models (the AI behind ChatGPT, Gemini and Google's AI features) understand it and mention it in their answers.</p></details>
+      <details><summary>Can you guarantee ChatGPT will recommend my business?</summary><p>No. Nobody controls what AI tools say. I improve the signals they rely on and measure the results honestly every month.</p></details>
+      <details><summary>Do I still need regular SEO?</summary><p>Yes. AI tools lean heavily on websites that already rank well and are trusted, so SEO is the foundation.</p></details>
+      <details><summary>How long does it take?</summary><p>Some changes, like fixing your business details and adding clear FAQs, can show up within weeks. Building mentions and authority takes a few months.</p></details>
+      <details><summary>How do you measure AI visibility?</summary><p>I test real customer questions across AI tools each month and use tools like Semrush to track mentions and cited pages.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="callout">
+      <h2>Will your business be part of the answer?</h2>
+      <p class="prose">Send me your business name on WhatsApp and I'll check what AI tools say about you today, for free.</p>
+      <div class="row">
+        <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir,%20I%20would%20like%20a%20free%20AI%20search%20visibility%20check." target="_blank" rel="noopener">Get a free AI visibility check</a>
+        <a class="btn btn-ghost" href="service-local-seo.html">Local SEO service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+</body>
+</html>

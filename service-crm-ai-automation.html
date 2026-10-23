@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CRM &amp; AI Automation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: single-column case study report on the portfolio's navy + gold system; numbers first, story second. */
+:root {
+  --navy: #171642; --gold: #FCB814; --gold-deep: #D09818;
+  --bg: var(--navy); --surface: #1F1D52; --line: #2F2D5C; --fg: #FFFFFF; --muted: #A9A8C4;
+  --accent: var(--gold); --accent-ink: var(--navy); --good: #4ADE9B;
+  --f-display: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-body: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  --f-mono: "Times New Roman", Times, Tinos, "Liberation Serif", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.1; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 960px; margin-inline: auto; padding-inline: 20px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 64px; }
+.logo { font-family: var(--f-display); font-weight: 700; font-size: 22px; text-decoration: none; }
+.logo span { color: var(--accent); }
+.back { font-size: 15px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--fg); }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; font-family: var(--f-body); }
+.btn-gold { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { border: 1px solid var(--line); }
+header { padding-block: 64px 48px; }
+header .wrap { display: grid; gap: 20px; }
+.client-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.client-row img { width: 56px; height: 56px; border-radius: 14px; background: #fff; display: block; }
+.client-row .meta { display: grid; gap: 2px; font-size: 15px; color: var(--muted); }
+.client-row .meta b { color: var(--fg); font-size: 18px; }
+h1 { font-size: clamp(38px, 6vw, 62px); font-weight: 700; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { font-size: 20px; color: var(--muted); max-width: 640px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 22px 20px; display: grid; gap: 4px; min-width: 0; }
+.kpi .label { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kpi .val { font-family: var(--f-display); font-size: clamp(30px, 4vw, 42px); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.kpi .sub { font-size: 14px; color: var(--muted); }
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+section .wrap { display: grid; gap: 20px; }
+h2 { font-size: clamp(28px, 3.6vw, 38px); }
+.prose { display: grid; gap: 14px; max-width: 680px; color: var(--muted); }
+.prose strong { color: var(--fg); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding-block: 16px; border-top: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 1px solid var(--line); }
+.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.steps b { display: block; font-size: 19px; }
+.steps span { color: var(--muted); font-size: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; min-width: 0; }
+.chart-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.chart-head b { font-size: 19px; }
+.chart-head span { font-size: 14px; color: var(--muted); }
+.chart-scroll { overflow-x: auto; }
+.chart-scroll svg { width: 100%; min-width: 560px; height: auto; display: block; }
+.ax { font-family: var(--f-mono); font-size: 11px; fill: var(--muted); }
+.note { font-size: 14px; color: var(--muted); }
+figure { margin: 0; display: grid; gap: 10px; }
+figure img { width: 100%; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: #fff; display: block; }
+figcaption { font-size: 14px; color: var(--muted); }
+blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.4; max-width: 760px; position: relative; padding-top: 34px; }
+blockquote::before { content: "\201C"; position: absolute; top: -18px; left: -2px; font-size: 80px; line-height: 1; color: var(--accent); }
+.who { display: flex; align-items: center; gap: 12px; font-size: 15px; }
+.who .av { width: 44px; height: 44px; border-radius: 50%; background: var(--line); color: var(--accent); display: grid; place-items: center; font-weight: 700; }
+.who b { display: block; }
+.who span { color: var(--muted); }
+.cta { text-align: left; }
+.cta .row { display: flex; gap: 12px; flex-wrap: wrap; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 8px 18px; }
+th, td { text-align: right; padding: 12px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; }
+th { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 500; }
+tfoot td { font-weight: 700; color: var(--accent); border-bottom: 0; }
+.shots summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.shot-grid { display: grid; gap: 14px; margin-top: 14px; }
+.shot-grid img { width: 100%; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; display: block; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; font-size: 14px; color: var(--muted); }
+@media (max-width: 720px) { .kpis { grid-template-columns: 1fr 1fr; } }
+
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--muted); font-size: 16px; }
+.card .n { font-family: var(--f-mono); color: var(--accent); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.result-card { text-decoration: none; color: inherit; transition: border-color .2s, transform .15s; }
+.result-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.result-card .big { font-family: var(--f-display); font-size: 42px; font-weight: 700; color: var(--accent); line-height: 1; }
+.result-card .go { color: var(--accent); font-weight: 700; font-size: 15px; }
+.result-card .top { display: flex; align-items: center; gap: 12px; }
+.result-card .top img { width: 44px; height: 44px; border-radius: 10px; background: #fff; }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; }
+.checks li { position: relative; padding-left: 26px; color: var(--fg); font-size: 16px; }
+.checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.no li::before { content: "\2715"; color: var(--muted); }
+.timeline { display: grid; gap: 0; }
+.timeline > div { display: grid; grid-template-columns: 160px 1fr; gap: 18px; padding-block: 18px; border-top: 1px solid var(--line); }
+.timeline > div:last-child { border-bottom: 1px solid var(--line); }
+.timeline .when { font-family: var(--f-mono); color: var(--accent); font-size: 14px; padding-top: 3px; }
+.timeline b { display: block; font-size: 19px; }
+.timeline span { color: var(--muted); font-size: 16px; }
+.compare td:not(:first-child), .compare th:not(:first-child) { text-align: center; }
+.compare .yes { color: var(--accent); font-weight: 700; }
+.compare .me { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.faq { display: grid; gap: 0; }
+.faq details { border-top: 1px solid var(--line); padding-block: 16px; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; font-size: 19px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 22px; line-height: 1; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq p { color: var(--muted); margin-top: 10px; max-width: 720px; }
+.hero-stats { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 8px; }
+.hero-stats div { display: grid; gap: 2px; }
+.hero-stats b { font-family: var(--f-display); font-size: 34px; color: var(--accent); line-height: 1; }
+.hero-stats span { color: var(--muted); font-size: 15px; }
+.logos { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.logos img { width: 56px; height: 56px; border-radius: 12px; background: #fff; object-fit: cover; }
+.callout { background: var(--surface); border: 1px solid var(--accent); border-radius: 18px; padding: 32px; display: grid; gap: 16px; }
+@media (max-width: 860px) { .grid3 { grid-template-columns: 1fr 1fr; } .checks { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .grid3, .grid2 { grid-template-columns: 1fr; } .timeline > div { grid-template-columns: 1fr; gap: 4px; } }
+
+
+.fnews { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.fnews h4 { margin: 0 0 6px; font-family: var(--f-display); font-size: 20px; color: var(--fg); }
+.fnews p { margin: 0; }
+.news-form { display: flex; flex-wrap: wrap; gap: 10px; background: none; border: 0; padding: 0; border-radius: 0; }
+.news-form input { flex: 1 1 220px; min-width: 0; font: inherit; font-size: 16px; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.news-form input:focus { outline: none; border-color: var(--accent); }
+.news-msg { flex-basis: 100%; font-size: 15px; color: var(--fg); }
+.news-msg a { color: var(--accent); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 760px) { .fnews { grid-template-columns: 1fr; } }
+.site-footer { border-top: 1px solid var(--line); padding-block: 48px 28px; font-size: 15px; color: var(--muted); }
+.site-footer .wrap { display: grid; gap: 32px; }
+.fcols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 0.8fr; gap: 28px; }
+.fcols > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.fcols h4 { margin: 0 0 4px; font-family: var(--f-display); font-size: 18px; color: var(--fg); }
+.fcols a { color: var(--muted); text-decoration: none; }
+.fcols a:hover { color: var(--accent); }
+.fcols p { margin: 0; }
+.fcols .logo { color: var(--fg); font-size: 22px; }
+.fbottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) { .fcols { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .fcols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html">Zahir <span>Islam</span></a>
+    <a class="back" href="index.html#services">&larr; All services</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">Service · CRM &amp; AI Automation</span>
+    <h1>Stop letting <em>good leads go cold.</em></h1>
+    <p class="lede">I set up CRM and AI automation that captures every lead, replies instantly, books appointments and follows up for you, so no enquiry from your ads or website is ever forgotten.</p>
+    <div class="cta"><div class="row">
+      <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir,%20I%20would%20like%20to%20talk%20about%20CRM%20and%20AI%20automation." target="_blank" rel="noopener">Book a free automation call</a>
+      <a class="btn btn-ghost" href="index.html#work">See case studies</a>
+    </div></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The problem</span>
+    <h2>Your marketing shouldn't stop when someone becomes a lead</h2>
+    <div class="grid2"><div class="prose"><p>Businesses spend money getting enquiries, then lose them in a WhatsApp inbox, a spreadsheet or a missed call. <strong>Most leads go cold because nobody replied fast enough or followed up.</strong></p></div><ul class="checks no" style="grid-template-columns:1fr"><li>Slow replies to new enquiries</li><li>Missed calls with no call-back</li><li>No follow-up after the first message</li><li>Leads spread across apps and inboxes</li><li>No idea which ads bring paying customers</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">What I automate</span>
+    <h2>Automations that work while you sleep</h2>
+    <div class="grid3"><div class="card"><h3>Lead capture &amp; CRM setup</h3><p>Leads from your website, Facebook, Google and WhatsApp land in one place automatically.</p></div><div class="card"><h3>Instant lead follow-up</h3><p>New leads get a reply by SMS, email or WhatsApp within seconds.</p></div><div class="card"><h3>Appointment booking</h3><p>Customers book a time from a link, with reminders sent automatically.</p></div><div class="card"><h3>No-show recovery</h3><p>People who miss an appointment get a friendly message to rebook.</p></div><div class="card"><h3>Missed call text-back</h3><p>Every missed call gets an instant text so the customer doesn't call a competitor.</p></div><div class="card"><h3>AI chat &amp; booking assistant</h3><p>An AI assistant answers common questions and books appointments 24/7.</p></div><div class="card"><h3>Reviews automation</h3><p>Happy customers are asked for a Google review at the right moment.</p></div><div class="card"><h3>Estimate &amp; proposal follow-up</h3><p>Quotes are followed up automatically until the customer decides.</p></div><div class="card"><h3>Customer reactivation</h3><p>Past customers get offers and reminders to come back.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Pipeline</span>
+    <h2>A CRM pipeline that shows every lead</h2>
+    <div class="prose"><p>Every lead moves through clear stages, so you always know who to call and what's next:</p></div><div class="chips"><span class="chip">New lead</span><span class="chip">Contacted</span><span class="chip">Qualified</span><span class="chip">Appointment booked</span><span class="chip">Proposal sent</span><span class="chip">Won</span><span class="chip">Lost / follow up later</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">The process</span>
+    <h2>How I build your system</h2>
+    <div class="timeline"><div><span class="when">Step 1</span><div><b>Map your customer journey</b><span>I learn how leads come in today, how you reply and where they get lost.</span></div></div><div><span class="when">Step 2</span><div><b>Set up the CRM</b><span>Pipeline, contacts, forms, calendars and integrations with your ads and website.</span></div></div><div><span class="when">Step 3</span><div><b>Build the automations</b><span>Follow-ups, reminders, review requests and AI replies, written in your voice.</span></div></div><div><span class="when">Step 4</span><div><b>Test, train and hand over</b><span>I test every flow, train your team and keep improving it with you.</span></div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Who it's for</span>
+    <h2>Built around your business</h2>
+    <div class="grid3"><div class="card"><h3>Clinics &amp; healthcare</h3><p>Bookings, reminders and fewer no-shows.</p></div><div class="card"><h3>Schools &amp; tuition centres</h3><p>Enquiry follow-up and trial class bookings.</p></div><div class="card"><h3>Real estate</h3><p>Fast replies to property leads and viewing bookings.</p></div><div class="card"><h3>Restaurants</h3><p>Reservations, reviews and repeat-visit offers.</p></div><div class="card"><h3>Agencies &amp; services</h3><p>Proposal follow-up and client onboarding.</p></div><div class="card"><h3>Local businesses</h3><p>Missed call text-back and review requests.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Ads + automation</span>
+    <h2>Your ads and your CRM work as one system</h2>
+    <div class="prose"><p>I already run Google Ads and Meta Ads for my clients. Connecting those leads to an automated CRM means faster replies, fewer lost leads and clear reporting on which ads bring paying customers.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>Frequently asked questions</h2>
+    <div class="faq"><details><summary>Which CRM do you use?</summary><p>I work with the tool that fits your business and budget, and I can also work with a CRM you already use.</p></details><details><summary>Will the AI reply sound like a robot?</summary><p>No. Replies are written in your tone, and the AI hands over to a person whenever a question needs a human.</p></details><details><summary>Can it connect to WhatsApp and Facebook?</summary><p>Yes. Leads from Facebook lead forms, Messenger, WhatsApp, Google and your website can all go into one CRM.</p></details><details><summary>Do I need technical skills?</summary><p>No. I set everything up, train your team and support you after launch.</p></details><details><summary>How long does setup take?</summary><p>A basic lead capture and follow-up system can be ready in a couple of weeks. Larger systems take longer.</p></details></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div class="callout">
+      <h2>A CRM isn't the goal. More customers are.</h2>
+      <p class="prose">Message me on WhatsApp and I'll show you where leads are slipping through the cracks.</p>
+      <div class="row">
+        <a class="btn btn-gold" href="https://wa.me/8801644842785?text=Hi%20Zahir,%20I%20would%20like%20to%20talk%20about%20CRM%20and%20AI%20automation." target="_blank" rel="noopener">Book a free automation call</a>
+        <a class="btn btn-ghost" href="service-meta-ads.html">Meta Ads service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div><a class="logo" href="index.html">Zahir <span>Islam</span></a><p>Digital Marketer · Dhaka, Bangladesh</p><p><a href="https://wa.me/8801644842785" target="_blank" rel="noopener">WhatsApp: +880 1644-842785</a></p><p>islamzahirul7048@gmail.com</p></div>
+      <div><h4>Services</h4><a href="service-local-seo.html">Local SEO</a><a href="service-google-business-profile.html">Google Business Profile</a><a href="service-ai-search.html">AI Search Optimization</a><a href="service-google-ads.html">Google Ads</a><a href="service-meta-ads.html">Meta Ads</a><a href="service-white-label-seo.html">White Label SEO</a><a href="service-crm-ai-automation.html">CRM &amp; AI Automation</a></div>
+      <div><h4>Tools</h4><a href="tools.html#local-seo">Local SEO Tool</a><a href="tools.html#roi">Legal Lead ROI Calculator</a><a href="tools.html#gmb">GMB Health &amp; Review Velocity Monitor</a><a href="tools.html#schema">Schema Markup Generator</a><a href="tools.html#fanout">Fan Out Query Research</a></div>
+      <div><h4>Explore</h4><a href="index.html#work">Case Studies</a><a href="index.html#brands">Brands</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    </div>
+<div class="fnews">
+      <div><h4>Newsletter</h4><p>Practical local SEO, Google Ads and Meta Ads tips, once a month. No spam, unsubscribe any time.</p></div>
+      <form class="news-form" id="news-form" novalidate>
+        <label for="news-email" class="sr-only">Email address</label>
+        <input id="news-email" name="email" type="email" required autocomplete="email" placeholder="you@gmail.com">
+        <a class="btn btn-gold" id="news-btn" href="https://wa.me/8801644842785" target="_blank" rel="noopener">Subscribe</a>
+        <p class="news-msg" id="news-msg" role="status" hidden></p>
+      </form>
+    </div>
+    <script>
+    (function () {
+      /* Paste your Formspree form URL here, e.g. "https://formspree.io/f/abcdwxyz".
+         Every new subscriber is then emailed to you automatically. */
+      var ENDPOINT = "";
+      var form = document.getElementById('news-form'), input = document.getElementById('news-email'),
+          btn = document.getElementById('news-btn'), msg = document.getElementById('news-msg');
+      var WA = 'https://wa.me/8801644842785?text=';
+      function show(text) { msg.textContent = text; msg.hidden = false; }
+      function valid(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+      function sync() { btn.href = WA + encodeURIComponent('Hi Zahir, please add me to your newsletter: ' + input.value.trim()); }
+      input.addEventListener('input', function () { sync(); msg.hidden = true; });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); btn.click(); });
+      btn.addEventListener('click', function (e) {
+        var email = input.value.trim();
+        if (!valid(email)) { e.preventDefault(); show('Please enter a valid email address.'); input.focus(); return; }
+        sync();
+        if (!ENDPOINT) { show('Opening WhatsApp. Press send to finish subscribing.'); return; }
+        e.preventDefault();
+        var fd = new FormData(); fd.append('email', email);
+        btn.textContent = 'Subscribing…';
+        fetch(ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); show('Thanks! You\u2019re subscribed.'); input.value = ''; })
+          .catch(function () { show('Could not subscribe right now. Please message me on WhatsApp instead.'); })
+          .then(function () { btn.textContent = 'Subscribe'; });
+      });
+      sync();
+    })();
+    </script>
+        <div class="fbottom"><span>© 2026 Zahir Islam</span><span>Digital Marketer</span></div>
+  </div>
+</footer>
+</body>
+</html>
