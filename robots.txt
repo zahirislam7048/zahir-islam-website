@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /local-seo-tool/api/
+Disallow: /local-seo-tool/inc/
+Disallow: /local-seo-tool/install.php
+Disallow: /local-seo-tool/scan.php
+Disallow: /local-seo-tool/logout.php
+
+Sitemap: https://zahirislam.com/sitemap.xml
