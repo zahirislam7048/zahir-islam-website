@@ -13,15 +13,16 @@ if [ "${1:-}" != "--copy-only" ]; then
   git reset -q --hard origin/main
 fi
 
+# Copies only the files tracked in git, never the folder itself, so the document root keeps its own
+# permissions (it must stay 755 or the web server returns 404 for everything).
 # Never overwrites local-seo-tool/config.php (it is not in the repo) and never deletes files on the server.
 umask 022
-tar -cf - \
-  --exclude='./.git' --exclude='./.cpanel.yml' --exclude='./deploy.sh' --exclude='./README.md' --exclude='./.gitignore' \
-  --exclude='./local-seo-tool/config.php' \
-  . | tar --no-same-permissions -xf - -C "$DEST"
+git ls-files -z \
+  | grep -z -v -E '^(\.cpanel\.yml|deploy\.sh|README\.md|\.gitignore)$' \
+  | tar --null --no-recursion -T - -cf - \
+  | tar --no-same-permissions -xf - -C "$DEST"
 
-# The web server must be able to read what was copied. cPanel's clone can be owner-only (600/700),
-# which makes every page return 404, so set normal web permissions on exactly the files from the repo.
+# Files 644, their folders 755 (cPanel's clone can be owner-only). The document root itself is not touched.
 git ls-files | while IFS= read -r f; do
   if [ -f "$DEST/$f" ]; then chmod 644 "$DEST/$f"; fi
 done
