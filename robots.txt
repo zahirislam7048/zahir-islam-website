@@ -5,22 +5,4 @@ Disallow: /local-seo-tool/install.php
 Disallow: /local-seo-tool/scan.php
 Disallow: /local-seo-tool/logout.php
 
-# AI search and assistant crawlers are welcome (ChatGPT, Claude, Perplexity, Gemini, Apple)
-User-agent: OAI-SearchBot
-User-agent: ChatGPT-User
-User-agent: GPTBot
-User-agent: ClaudeBot
-User-agent: Claude-SearchBot
-User-agent: Claude-User
-User-agent: PerplexityBot
-User-agent: Perplexity-User
-User-agent: Google-Extended
-User-agent: Applebot-Extended
-Allow: /
-Disallow: /local-seo-tool/api/
-Disallow: /local-seo-tool/inc/
-Disallow: /local-seo-tool/install.php
-Disallow: /local-seo-tool/scan.php
-Disallow: /local-seo-tool/logout.php
-
 Sitemap: https://zahirislam.com/sitemap.xml
